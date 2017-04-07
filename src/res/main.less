@@ -1,0 +1,384 @@
+@import "variable.less";
+
+/**
+ * left     -> lt
+ * right    -> rt
+ * top      -> tp
+ * bottom   -> bt 
+ *
+ * padding  -> pd
+ * margin   -> mg
+ * border   -> bd 
+ * outline  -> ot
+ *
+ * pl       -> pull
+ * cl       -> clear
+ *
+ * of       -> overflow
+ * hd       -> hidden
+ * ot       -> auto
+ * sl       -> scroll
+ *
+ * w        -> width
+ * h        -> height
+ *
+ * udl      -> underline
+ * orl      -> overline
+ * thl      -> throughline
+ * nl       -> noneline
+ *
+ * mxs      -> mobile x-small
+ * ms       -> mobile small
+ * mm       -> mobile middle
+ * ml       -> mobile large
+ * mxl      -> mobile x-large
+ * xs       -> pc x-small
+ * s        -> pc small
+ * m        -> pc middle
+ * l        -> pc large
+ * xl       -> pc x-large
+ */
+
+.make-classes () {
+    @item : ~".";
+    .make-classes( @item );
+}
+
+.make-classes ( @class ) when ( iskeyword( @class ) ) {
+    @item : ~".@{class}-";
+    .make-classes( @item );
+}
+
+.make-classes ( @cl ) when ( isstring( @cl ) ) {
+    // display;
+    @{cl}none { display: none; }
+    @{cl}block { display: block; }
+    @{cl}inline { display: inline; }
+    @{cl}inline-block { display: inline-block; }
+    @{cl}table { display: table; }
+    @{cl}flex {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: flex;
+
+        // item justify
+        &.space-between {
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        &.center {
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+        
+        &.start {
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+        }
+
+        &.end {
+            -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+        }
+
+        // item align
+        &.align-center {
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        &.align-start {
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+        }
+
+        // item wrap
+        &.wrap {
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        &.column {
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+    @{cl}display-unset {
+        display: inherit;
+        display: initial;
+        display: unset;
+    }
+
+    @{cl}block-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @{cl}vertical-center {
+        display: table-cell;
+        vertical-align: middle;
+    }
+   
+    @{cl}text-center { text-align: center; }
+    @{cl}text-left { text-align: left; }
+    @{cl}text-right { text-align: right; }
+
+    // position
+    @{cl}static { position: static; }
+    @{cl}absolute { position: absolute; }
+    @{cl}relative { position: relative; }
+    @{cl}fixed { position: fixed; }
+
+    @{cl}left { left : 0px }
+    @{cl}right { right: 0px }
+    @{cl}top { top: 0px }
+    @{cl}bottom { bottom: 0px }
+
+    // z-index levels.
+    @{cl}z-higher-then-your-dont-where-to-go   { z-index: 9999999999999999999; }
+    @{cl}z-high     { z-index: 10; }
+    @{cl}z-middle   { z-index: 5; }
+    @{cl}z-low      { z-index: 1; }
+    @{cl}z-normail  { z-index: 0; }
+    @{cl}z-floor    { z-index: -1; }
+
+    .stu ( @struct, @struct-short ) {
+        @cl2: ~" ";
+        @range: 1;
+        ._stu ( @struct, @struct-short, @cl2, @range );
+    }
+
+    .stu ( @struct, @struct-short, @cl2, @range ) {
+        @_cl2: ~"-@{cl2}";
+        ._stu ( @struct, @struct-short, @_cl2, @range );
+    }
+
+    ._stu ( @struct, @struct-short, @cl2, @range ) {
+        @{cl}@{struct}@{cl2},
+        @{cl}@{struct-short}@{cl2} { @{struct}: @pd * @range };
+
+        @{cl}@{struct}-left@{cl2},
+        @{cl}@{struct-short}-lt@{cl2} { @{struct}-left: @pd * @range };
+        @{cl}@{struct}-right@{cl2},
+        @{cl}@{struct-short}-rt@{cl2} { @{struct}-right: @pd * @range };
+        @{cl}@{struct}-top@{cl2},
+        @{cl}@{struct-short}-tp@{cl2} { @{struct}-top: @pd * @range };
+        @{cl}@{struct}-bottom@{cl2},
+        @{cl}@{struct-short}-bt@{cl2} { @{struct}-bottom: @pd * @range };
+    }
+
+    .stu( padding, pd, no, 0 );
+    .stu( padding, pd, quarter, .25 );
+    .stu( padding, pd, half, .5 );
+    .stu( padding, pd );
+    .stu( padding, pd, x2, 2 );
+    .stu( padding, pd, x4, 4 );
+    .stu( padding, pd, x8, 8 );
+    .stu( padding, pd, x16, 16 );
+   
+    .stu( margin, mg, no, 0 );
+    .stu( margin, mg, quarter, .25 );
+    .stu( margin, mg, half, .5 );
+    .stu( margin, mg );
+    .stu( margin, mg, x2, 2 );
+    .stu( margin, mg, x4, 4 );
+    .stu( margin, mg, x8, 8 );
+    .stu( margin, mg, x16, 16 );
+
+    
+    .stu_bd ( @struct, @struct-short ) {
+        @cl2: ~" ";
+        @style: solid;
+        @color: gray;
+        @width: 1px;
+        ._stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color );
+    }
+
+    .stu_bd ( @struct, @struct-short, @cl2, @width ) {
+        @style: solid;
+        @color: gray;
+        @_cl2: ~"-@{cl2}";
+        ._stu_bd ( @struct, @struct-short, @_cl2, @width, @style, @color );
+    }
+
+    .stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color ) {
+        @_cl2: ~"-@{cl2}";
+        ._stu_bd ( @struct, @struct-short, @_cl2, @width, @style, @color );
+    }
+
+    ._stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color ) {
+        @{cl}@{struct}@{cl2},
+        @{cl}@{struct-short}@{cl2} { @{struct}: @width @style @color; };
+
+        @{cl}@{struct}-left@{cl2},
+        @{cl}@{struct-short}-lt@{cl2} { @{struct}-left: @width @style @color; };
+        @{cl}@{struct}-right@{cl2},
+        @{cl}@{struct-short}-rt@{cl2} { @{struct}-right: @width @style @color; };
+        @{cl}@{struct}-top@{cl2},
+        @{cl}@{struct-short}-tp@{cl2} { @{struct}-top: @width @style @color; };
+        @{cl}@{struct}-bottom@{cl2},
+        @{cl}@{struct-short}-bt@{cl2} { @{struct}-bottom: @width @style @color; };
+
+    }
+
+    .stu_bd( border, bd );
+    .stu_bd( border, bd, x2, @pd * 2 );
+    .stu_bd( border, bd, x4, @pd * 4 );
+    .stu_bd( border, bd, x8, @pd * 8 );
+    .stu_bd( border, bd, x16, @pd * 16 );
+    .stu_bd( border, bd, no, 0 );
+
+    .stu_bd( outline, ot );
+    .stu_bd( outline, ot, x2, @pd * 2 );
+    .stu_bd( outline, ot, x4, @pd * 4 );
+    .stu_bd( outline, ot, x8, @pd * 8 );
+    .stu_bd( outline, ot, x16, @pd * 16 );
+    .stu_bd( outline, ot, no, 0 );
+
+    // border type
+    @{cl}solid { border-style: solid; }
+    @{cl}dotted { border-style: dotted; }
+    @{cl}dashed { border-style: dashed; }
+
+
+    @{cl}radius-no { border-radius: 0; }
+    @{cl}radius { border-radius: @radius; }
+    @{cl}circle { border-radius: 50%; }
+
+    // float;
+    // If your project has been run into modern browser like Chrome or Firfox, just replace flex box by float as far as you can.
+    @{cl}pl-lt,
+    @{cl}pull-left { float: left; }
+    @{cl}pl-rt,
+    @{cl}pull-right { float: right; }
+    @{cl}cl-lt,
+    @{cl}clear-left { clear: left; }
+    @{cl}cl-rt,
+    @{cl}clear-right { clear: right; }
+    @{cl}cl-bt,
+    @{cl}clear-both { clear: both; }
+    @{cl}clearfix {
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+
+    // width;
+    // The importent things is that the width included padding but not have margin.
+    @{cl}auto,
+    @{cl}w-auto { width: auto; }
+    @{cl}full,
+    @{cl}w-full { width: 100%; }
+    @{cl}half,
+    @{cl}w-half { width: 50%; }
+    @{cl}quarter,
+    @{cl}w-quarter { width: 25%; }
+    @{cl}third,
+    @{cl}w-third { width: 33.3333333%; }
+
+    // height;
+    // unfrequently
+    @{cl}h-auto { height: auto; }
+    @{cl}h-full { height: 100%; }           // ...except me;
+    @{cl}h-half { height: 50%; }
+    @{cl}h-quarter { height: 25%; }
+    @{cl}h-third { height: 33.3333333%; }
+
+    .width-calc( @cp ) {
+        width: ~"-webkit-calc(@{cp})";
+        width: ~"calc(@{cp})";
+    }
+
+    // overflow;
+    @{cl}of-hd,
+    @{cl}overflow-hidden { overflow: hidden; }
+    @{cl}of-ot,
+    @{cl}overflow-auto { overflow: auto; }
+    @{cl}of-sl,
+    @{cl}overflow-scroll{ overflow: scroll; }
+
+    // box shadow
+    @{cl}shadow-none { box-shadow: none; }
+
+    // text decoration
+    @{cl}udl {
+        &, &:hover, &:active, &:focus {
+            text-decoration: underline;
+        }
+    }
+    @{cl}orl {
+        &, &:hover, &:active, &:focus {
+            text-decoration: overline;
+        }
+    }
+    @{cl}thl {
+        &, &:hover, &:active, &:focus {
+            text-decoration: line-through;
+        }
+    }
+    @{cl}nl {
+        &, &:hover, &:active, &:focus {
+            text-decoration: none;
+        }
+    }
+
+    // font weight
+    @{cl}lighter {
+        font-weight: lighter;
+    }
+    @{cl}normal {
+        font-weight: normal;
+    }
+    @{cl}bold {
+        font-weight: bold;
+    }
+
+    .stu_font( @size ) when ( @size >= 8 ) {
+        @{cl}font-@{size} {
+            font-size: ~"@{size}px";
+        }
+
+        .stu_font( @size - 2 );
+    }
+
+    .stu_font( 50 );
+}
+
+.make-classes();
+
+@media screen {
+    @media ( min-width: @m-xs ) {
+        .make-classes( mxs );
+    }
+    @media ( min-width: @m-s ) {
+        .make-classes( ms );
+    }
+    @media ( min-width: @m-m ) {
+        .make-classes( mm );
+    }
+    @media ( min-width: @m-l ) {
+        .make-classes( ml );
+    }
+    @media ( min-width: @m-xl ) {
+        .make-classes( mxl );
+    }
+    @media ( min-width: @xs ) {
+        .make-classes( xs );
+    }
+    @media ( min-width: @s ) {
+        .make-classes( s );
+    }
+    @media ( min-width: @m ) {
+        .make-classes( m );
+    }
+    @media ( min-width: @l ) {
+        .make-classes( l );
+    }
+    @media ( min-width: @xl ) {
+        .make-classes( xl );
+    }
+}
+

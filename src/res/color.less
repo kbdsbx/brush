@@ -1,0 +1,30 @@
+@import "variable.less";
+
+.make-color ( @color-label, @color, @fade-amount : 100% ) {
+    .@{color-label}, .@{color-label}:hover, .@{color-label}:focus {
+        color: @color;
+
+        a {
+            color: @color;
+        }
+    }
+
+    .@{color-label}-bg {
+        background-color: fade( @color, @fade-amount );
+    }
+
+    .@{color-label}-bd {
+        border-color: @color;
+    }
+}
+
+.make-color( hl, @hl );
+.make-color( white , @white );
+.make-color( gray, @gray );
+.make-color( hoary, @hoary );
+.make-color( black, @black );
+.make-color( trans, @trans );
+.make-color( red, @red );
+.make-color( green, @green );
+
+
