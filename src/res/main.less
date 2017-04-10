@@ -39,24 +39,39 @@
  * xl       -> pc x-large
  */
 
+.media-select ( @tag, @value, @min ) when ( @min <= 0 ) {
+    @{tag} {
+        @value();
+    }
+}
+
+.media-select ( @tag, @value, @min ) when ( @min > 0 ) {
+    @{tag} {
+        @media ( min-width: @min ) {
+            @value();
+        }
+    }
+}
+
 .make-classes () {
-    @item : ~".";
-    .make-classes( @item );
+    @cl : ~".";
+    @min : 0px;
+    .make-classes( @cl, @min );
 }
 
-.make-classes ( @class ) when ( iskeyword( @class ) ) {
-    @item : ~".@{class}-";
-    .make-classes( @item );
+.make-classes ( @class, @min ) when ( iskeyword( @class ) ) {
+    @cl : ~".@{class}-";
+    .make-classes( @cl, @min );
 }
 
-.make-classes ( @cl ) when ( isstring( @cl ) ) {
+.make-classes ( @cl, @min ) when ( isstring( @cl ) ) {
     // display;
-    @{cl}none { display: none; }
-    @{cl}block { display: block; }
-    @{cl}inline { display: inline; }
-    @{cl}inline-block { display: inline-block; }
-    @{cl}table { display: table; }
-    @{cl}flex {
+    .media-select( ~"@{cl}none", { display: none }, @min );
+    .media-select( ~"@{cl}block", { display: block }, @min );
+    .media-select( ~"@{cl}inline", { display: inline }, @min );
+    .media-select( ~"@{cl}inline-block", { display: inline-block }, @min );
+    .media-select( ~"@{cl}table", { display: table }, @min );
+    .media-select( ~"@{cl}flex", {
         display: -webkit-flex;
         display: -moz-flex;
         display: flex;
@@ -103,45 +118,46 @@
             -webkit-flex-direction: column;
             flex-direction: column;
         }
-    }
-    @{cl}display-unset {
+    } , @min );
+
+    .media-select( ~"@{cl}display-unset", {
         display: inherit;
         display: initial;
         display: unset;
-    }
+    }, @min );
 
-    @{cl}block-center {
+    .media-select( ~"@{cl}block-center", {
         display: block;
         margin-left: auto;
         margin-right: auto;
-    }
-    @{cl}vertical-center {
+    }, @min );
+    .media-select( ~"@{cl}vertical-center", {
         display: table-cell;
         vertical-align: middle;
-    }
+    }, @min );
    
-    @{cl}text-center { text-align: center; }
-    @{cl}text-left { text-align: left; }
-    @{cl}text-right { text-align: right; }
+    .media-select( ~"@{cl}text-center", { text-align: center; }, @min );
+    .media-select( ~"@{cl}text-left", { text-align: left; }, @min );
+    .media-select( ~"@{cl}text-right", { text-align: right; }, @min );
 
     // position
-    @{cl}static { position: static; }
-    @{cl}absolute { position: absolute; }
-    @{cl}relative { position: relative; }
-    @{cl}fixed { position: fixed; }
+    .media-select( ~"@{cl}static", { position: static; }, @min );
+    .media-select( ~"@{cl}absolute", { position: absolute; }, @min );
+    .media-select( ~"@{cl}relative", { position: relative; }, @min );
+    .media-select( ~"@{cl}fixed", { position: fixed; }, @min );
 
-    @{cl}left { left : 0px }
-    @{cl}right { right: 0px }
-    @{cl}top { top: 0px }
-    @{cl}bottom { bottom: 0px }
+    .media-select( ~"@{cl}left", { left : 0px }, @min );
+    .media-select( ~"@{cl}right", { right: 0px }, @min );
+    .media-select( ~"@{cl}top", { top: 0px }, @min );
+    .media-select( ~"@{cl}bottom", { bottom: 0px }, @min );
 
     // z-index levels.
-    @{cl}z-higher-then-your-dont-where-to-go   { z-index: 9999999999999999999; }
-    @{cl}z-high     { z-index: 10; }
-    @{cl}z-middle   { z-index: 5; }
-    @{cl}z-low      { z-index: 1; }
-    @{cl}z-normail  { z-index: 0; }
-    @{cl}z-floor    { z-index: -1; }
+    .media-select( ~"@{cl}z-higher-then-your-dont-where-to-go",   { z-index: 9999999999999999999; }, @min );
+    .media-select( ~"@{cl}z-high",     { z-index: 10; }, @min );
+    .media-select( ~"@{cl}z-middle",   { z-index: 5; }, @min );
+    .media-select( ~"@{cl}z-low",      { z-index: 1; }, @min );
+    .media-select( ~"@{cl}z-normail",  { z-index: 0; }, @min );
+    .media-select( ~"@{cl}z-floor",    { z-index: -1; }, @min );
 
     .stu ( @struct, @struct-short ) {
         @cl2: ~" ";
@@ -155,17 +171,11 @@
     }
 
     ._stu ( @struct, @struct-short, @cl2, @range ) {
-        @{cl}@{struct}@{cl2},
-        @{cl}@{struct-short}@{cl2} { @{struct}: @pd * @range };
-
-        @{cl}@{struct}-left@{cl2},
-        @{cl}@{struct-short}-lt@{cl2} { @{struct}-left: @pd * @range };
-        @{cl}@{struct}-right@{cl2},
-        @{cl}@{struct-short}-rt@{cl2} { @{struct}-right: @pd * @range };
-        @{cl}@{struct}-top@{cl2},
-        @{cl}@{struct-short}-tp@{cl2} { @{struct}-top: @pd * @range };
-        @{cl}@{struct}-bottom@{cl2},
-        @{cl}@{struct-short}-bt@{cl2} { @{struct}-bottom: @pd * @range };
+        .media-select( ~"@{cl}@{struct}@{cl2}, @{cl}@{struct-short}@{cl2}", { @{struct}: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-left@{cl2}, @{cl}@{struct-short}-lt@{cl2}", { @{struct}-left: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-right@{cl2}, @{cl}@{struct-short}-rt@{cl2}", { @{struct}-right: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-top@{cl2}, @{cl}@{struct-short}-tp@{cl2}", { @{struct}-top: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-bottom@{cl2}, @{cl}@{struct-short}-bt@{cl2}", { @{struct}-bottom: @pd * @range }, @min );
     }
 
     .stu( padding, pd, no, 0 );
@@ -208,18 +218,11 @@
     }
 
     ._stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color ) {
-        @{cl}@{struct}@{cl2},
-        @{cl}@{struct-short}@{cl2} { @{struct}: @width @style @color; };
-
-        @{cl}@{struct}-left@{cl2},
-        @{cl}@{struct-short}-lt@{cl2} { @{struct}-left: @width @style @color; };
-        @{cl}@{struct}-right@{cl2},
-        @{cl}@{struct-short}-rt@{cl2} { @{struct}-right: @width @style @color; };
-        @{cl}@{struct}-top@{cl2},
-        @{cl}@{struct-short}-tp@{cl2} { @{struct}-top: @width @style @color; };
-        @{cl}@{struct}-bottom@{cl2},
-        @{cl}@{struct-short}-bt@{cl2} { @{struct}-bottom: @width @style @color; };
-
+        .media-select( ~"@{cl}@{struct}@{cl2}, @{cl}@{struct-short}@{cl2}," { @{struct}: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-left@{cl2}, @{cl}@{struct-short}-lt@{cl2}," { @{struct}-left: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-right@{cl2}, @{cl}@{struct-short}-rt@{cl2}," { @{struct}-right: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-top@{cl2}, @{cl}@{struct-short}-tp@{cl2}," { @{struct}-top: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-bottom@{cl2}, @{cl}@{struct-short}-bt@{cl2}," { @{struct}-bottom: @width @style @color; }, @min );
     }
 
     .stu_bd( border, bd );
@@ -237,55 +240,45 @@
     .stu_bd( outline, ot, no, 0 );
 
     // border type
-    @{cl}solid { border-style: solid; }
-    @{cl}dotted { border-style: dotted; }
-    @{cl}dashed { border-style: dashed; }
+    .media-select( ~"@{cl}solid", { border-style: solid; }, @min );
+    .media-select( ~"@{cl}dotted", { border-style: dotted; }, @min );
+    .media-select( ~"@{cl}dashed", { border-style: dashed; }, @min );
 
 
-    @{cl}radius-no { border-radius: 0; }
-    @{cl}radius { border-radius: @radius; }
-    @{cl}circle { border-radius: 50%; }
+    .media-select( ~"@{cl}radius-no", { border-radius: 0; }, @min );
+    .media-select( ~"@{cl}radius", { border-radius: @radius; }, @min );
+    .media-select( ~"@{cl}circle", { border-radius: 50%; }, @min );
 
     // float;
     // If your project has been run into modern browser like Chrome or Firfox, just replace flex box by float as far as you can.
-    @{cl}pl-lt,
-    @{cl}pull-left { float: left; }
-    @{cl}pl-rt,
-    @{cl}pull-right { float: right; }
-    @{cl}cl-lt,
-    @{cl}clear-left { clear: left; }
-    @{cl}cl-rt,
-    @{cl}clear-right { clear: right; }
-    @{cl}cl-bt,
-    @{cl}clear-both { clear: both; }
-    @{cl}clearfix {
+    .media-select( ~"@{cl}pl-lt, @{cl}pull-left", { float: left; }, @min );
+    .media-select( ~"@{cl}pl-rt, @{cl}pull-right", { float: right; }, @min );
+    .media-select( ~"@{cl}cl-lt, @{cl}clear-left", { clear: left; }, @min );
+    .media-select( ~"@{cl}cl-rt, @{cl}clear-right", { clear: right; }, @min );
+    .media-select( ~"@{cl}cl-bt, @{cl}clear-both", { clear: both; }, @min );
+    .media-select( ~"@{cl}clearfix", {
         &:after {
             content: "";
             display: table;
             clear: both;
         }
-    }
+    }, @min );
 
     // width;
     // The importent things is that the width included padding but not have margin.
-    @{cl}auto,
-    @{cl}w-auto { width: auto; }
-    @{cl}full,
-    @{cl}w-full { width: 100%; }
-    @{cl}half,
-    @{cl}w-half { width: 50%; }
-    @{cl}quarter,
-    @{cl}w-quarter { width: 25%; }
-    @{cl}third,
-    @{cl}w-third { width: 33.3333333%; }
+    .media-select( ~"@{cl}auto, @{cl}w-auto", { width: auto; }, @min );
+    .media-select( ~"@{cl}full, @{cl}w-full", { width: 100%; }, @min );
+    .media-select( ~"@{cl}half, @{cl}w-half", { width: 50%; }, @min );
+    .media-select( ~"@{cl}quarter, @{cl}w-quarter", { width: 25%; }, @min );
+    .media-select( ~"@{cl}third, @{cl}w-third", { width: 33.3333333%; }, @min );
 
     // height;
     // unfrequently
-    @{cl}h-auto { height: auto; }
-    @{cl}h-full { height: 100%; }           // ...except me;
-    @{cl}h-half { height: 50%; }
-    @{cl}h-quarter { height: 25%; }
-    @{cl}h-third { height: 33.3333333%; }
+    .media-select( ~"@{cl}h-auto", { height: auto; }, @min );
+    .media-select( ~"@{cl}h-full", { height: 100%; }, @min );           // ...except me;
+    .media-select( ~"@{cl}h-half", { height: 50%; }, @min );
+    .media-select( ~"@{cl}h-quarter", { height: 25%; }, @min );
+    .media-select( ~"@{cl}h-third", { height: 33.3333333%; }, @min );
 
     .width-calc( @cp ) {
         width: ~"-webkit-calc(@{cp})";
@@ -293,53 +286,50 @@
     }
 
     // overflow;
-    @{cl}of-hd,
-    @{cl}overflow-hidden { overflow: hidden; }
-    @{cl}of-ot,
-    @{cl}overflow-auto { overflow: auto; }
-    @{cl}of-sl,
-    @{cl}overflow-scroll{ overflow: scroll; }
+    .media-select( ~"@{cl}of-hd, @{cl}overflow-hidden", { overflow: hidden; }, @min );
+    .media-select( ~"@{cl}of-ot, @{cl}overflow-auto", { overflow: auto; }, @min );
+    .media-select( ~"@{cl}of-sl, @{cl}overflow-scroll", { overflow: scroll; }, @min );
 
     // box shadow
-    @{cl}shadow-none { box-shadow: none; }
+    .media-select( ~"@{cl}shadow-none", { box-shadow: none; }, @min );
 
     // text decoration
-    @{cl}udl {
+    .media-select( ~"@{cl}udl", {
         &, &:hover, &:active, &:focus {
             text-decoration: underline;
         }
-    }
-    @{cl}orl {
+    }, @min );
+    .media-select( ~"@{cl}orl", {
         &, &:hover, &:active, &:focus {
             text-decoration: overline;
         }
-    }
-    @{cl}thl {
+    }, @min );
+    .media-select( ~"@{cl}thl", {
         &, &:hover, &:active, &:focus {
             text-decoration: line-through;
         }
-    }
-    @{cl}nl {
+    }, @min );
+    .media-select( ~"@{cl}nl", {
         &, &:hover, &:active, &:focus {
             text-decoration: none;
         }
-    }
+    }, @min );
 
     // font weight
-    @{cl}lighter {
+    .media-select( ~"@{cl}lighter", {
         font-weight: lighter;
-    }
-    @{cl}normal {
+    }, @min );
+    .media-select( ~"@{cl}normal", {
         font-weight: normal;
-    }
-    @{cl}bold {
+    }, @min );
+    .media-select( ~"@{cl}bold", {
         font-weight: bold;
-    }
+    }, @min );
 
     .stu_font( @size ) when ( @size >= 8 ) {
-        @{cl}font-@{size} {
+        .media-select( ~"@{cl}font-@{size}", {
             font-size: ~"@{size}px";
-        }
+        }, @min );
 
         .stu_font( @size - 2 );
     }
@@ -348,37 +338,34 @@
 }
 
 .make-classes();
+.make-classes( mxs, @m-xs );
+.make-classes( ms, @m-s );
+.make-classes( mm, @m-m );
+.make-classes( ml, @m-l );
+.make-classes( mxl, @m-xl );
+.make-classes( xs, @xs );
+.make-classes( s, @s );
+.make-classes( m, @m );
+.make-classes( l, @l );
+.make-classes( xl, @xl );
 
-@media screen {
-    @media ( min-width: @m-xs ) {
-        .make-classes( mxs );
-    }
-    @media ( min-width: @m-s ) {
-        .make-classes( ms );
-    }
-    @media ( min-width: @m-m ) {
-        .make-classes( mm );
-    }
-    @media ( min-width: @m-l ) {
-        .make-classes( ml );
-    }
-    @media ( min-width: @m-xl ) {
-        .make-classes( mxl );
-    }
-    @media ( min-width: @xs ) {
-        .make-classes( xs );
-    }
-    @media ( min-width: @s ) {
-        .make-classes( s );
-    }
-    @media ( min-width: @m ) {
-        .make-classes( m );
-    }
-    @media ( min-width: @l ) {
-        .make-classes( l );
-    }
-    @media ( min-width: @xl ) {
-        .make-classes( xl );
+.user-media-select( @value, @min ) when( @min <= 0 ) {
+    @value();
+}
+.user-media-select( @value, @min ) when( @min > 0 ) {
+    @media screen and ( min-width: @min ) {
+        @value();
     }
 }
+
+.mxs( @value ) { .user-media-select( @value, @m-xs ); }
+.ms( @value ) { .user-media-select( @value, @m-s ); }
+.mm( @value ) { .user-media-select( @value, @m-m ); }
+.ml( @value ) { .user-media-select( @value, @m-l ); }
+.mxl( @value ) { .user-media-select( @value, @m-xl ); }
+.xs( @value ) { .user-media-select( @value, @xs ); }
+.s( @value ) { .user-media-select( @value, @s ); }
+.m( @value ) { .user-media-select( @value, @m ); }
+.l( @value ) { .user-media-select( @value, @l ); }
+.xl( @value ) { .user-media-select( @value, @xl ); }
 
