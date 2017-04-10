@@ -108,6 +108,11 @@
             align-items: flex-start;
         }
 
+        &.align-end {
+            -webkit-align-items: flex-end;
+            align-items: flex-end;
+        }
+
         // item wrap
         &.wrap {
             -webkit-flex-wrap: wrap;
@@ -171,11 +176,16 @@
     }
 
     ._stu ( @struct, @struct-short, @cl2, @range ) {
-        .media-select( ~"@{cl}@{struct}@{cl2}, @{cl}@{struct-short}@{cl2}", { @{struct}: @pd * @range }, @min );
-        .media-select( ~"@{cl}@{struct}-left@{cl2}, @{cl}@{struct-short}-lt@{cl2}", { @{struct}-left: @pd * @range }, @min );
-        .media-select( ~"@{cl}@{struct}-right@{cl2}, @{cl}@{struct-short}-rt@{cl2}", { @{struct}-right: @pd * @range }, @min );
-        .media-select( ~"@{cl}@{struct}-top@{cl2}, @{cl}@{struct-short}-tp@{cl2}", { @{struct}-top: @pd * @range }, @min );
-        .media-select( ~"@{cl}@{struct}-bottom@{cl2}, @{cl}@{struct-short}-bt@{cl2}", { @{struct}-bottom: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}@{cl2}", { @{struct}: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct-short}@{cl2}", { @{struct}: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-left@{cl2}", { @{struct}-left: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct-short}-lt@{cl2}", { @{struct}-left: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-right@{cl2}", { @{struct}-right: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct-short}-rt@{cl2}", { @{struct}-right: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-top@{cl2}", { @{struct}-top: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct-short}-tp@{cl2}", { @{struct}-top: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct}-bottom@{cl2}", { @{struct}-bottom: @pd * @range }, @min );
+        .media-select( ~"@{cl}@{struct-short}-bt@{cl2}", { @{struct}-bottom: @pd * @range }, @min );
     }
 
     .stu( padding, pd, no, 0 );
@@ -200,14 +210,14 @@
     .stu_bd ( @struct, @struct-short ) {
         @cl2: ~" ";
         @style: solid;
-        @color: gray;
+        @color: @gray;
         @width: 1px;
         ._stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color );
     }
 
     .stu_bd ( @struct, @struct-short, @cl2, @width ) {
         @style: solid;
-        @color: gray;
+        @color: @gray;
         @_cl2: ~"-@{cl2}";
         ._stu_bd ( @struct, @struct-short, @_cl2, @width, @style, @color );
     }
@@ -218,11 +228,16 @@
     }
 
     ._stu_bd ( @struct, @struct-short, @cl2, @width, @style, @color ) {
-        .media-select( ~"@{cl}@{struct}@{cl2}, @{cl}@{struct-short}@{cl2}," { @{struct}: @width @style @color; }, @min );
-        .media-select( ~"@{cl}@{struct}-left@{cl2}, @{cl}@{struct-short}-lt@{cl2}," { @{struct}-left: @width @style @color; }, @min );
-        .media-select( ~"@{cl}@{struct}-right@{cl2}, @{cl}@{struct-short}-rt@{cl2}," { @{struct}-right: @width @style @color; }, @min );
-        .media-select( ~"@{cl}@{struct}-top@{cl2}, @{cl}@{struct-short}-tp@{cl2}," { @{struct}-top: @width @style @color; }, @min );
-        .media-select( ~"@{cl}@{struct}-bottom@{cl2}, @{cl}@{struct-short}-bt@{cl2}," { @{struct}-bottom: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}@{cl2}" { @{struct}: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct-short}@{cl2}" { @{struct}: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-left@{cl2}" { @{struct}-left: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct-short}-lt@{cl2}" { @{struct}-left: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-right@{cl2}" { @{struct}-right: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct-short}-rt@{cl2}" { @{struct}-right: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-top@{cl2}" { @{struct}-top: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct-short}-tp@{cl2}" { @{struct}-top: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct}-bottom@{cl2}" { @{struct}-bottom: @width @style @color; }, @min );
+        .media-select( ~"@{cl}@{struct-short}-bt@{cl2}" { @{struct}-bottom: @width @style @color; }, @min );
     }
 
     .stu_bd( border, bd );
@@ -251,11 +266,16 @@
 
     // float;
     // If your project has been run into modern browser like Chrome or Firfox, just replace flex box by float as far as you can.
-    .media-select( ~"@{cl}pl-lt, @{cl}pull-left", { float: left; }, @min );
-    .media-select( ~"@{cl}pl-rt, @{cl}pull-right", { float: right; }, @min );
-    .media-select( ~"@{cl}cl-lt, @{cl}clear-left", { clear: left; }, @min );
-    .media-select( ~"@{cl}cl-rt, @{cl}clear-right", { clear: right; }, @min );
-    .media-select( ~"@{cl}cl-bt, @{cl}clear-both", { clear: both; }, @min );
+    .media-select( ~"@{cl}pl-lt", { float: left; }, @min );
+    .media-select( ~"@{cl}pull-left", { float: left; }, @min );
+    .media-select( ~"@{cl}pl-rt", { float: right; }, @min );
+    .media-select( ~"@{cl}pull-right", { float: right; }, @min );
+    .media-select( ~"@{cl}cl-lt", { clear: left; }, @min );
+    .media-select( ~"@{cl}clear-left", { clear: left; }, @min );
+    .media-select( ~"@{cl}cl-rt", { clear: right; }, @min );
+    .media-select( ~"@{cl}clear-right", { clear: right; }, @min );
+    .media-select( ~"@{cl}cl-bt", { clear: both; }, @min );
+    .media-select( ~"@{cl}clear-both", { clear: both; }, @min );
     .media-select( ~"@{cl}clearfix", {
         &:after {
             content: "";
@@ -266,11 +286,16 @@
 
     // width;
     // The importent things is that the width included padding but not have margin.
-    .media-select( ~"@{cl}auto, @{cl}w-auto", { width: auto; }, @min );
-    .media-select( ~"@{cl}full, @{cl}w-full", { width: 100%; }, @min );
-    .media-select( ~"@{cl}half, @{cl}w-half", { width: 50%; }, @min );
-    .media-select( ~"@{cl}quarter, @{cl}w-quarter", { width: 25%; }, @min );
-    .media-select( ~"@{cl}third, @{cl}w-third", { width: 33.3333333%; }, @min );
+    .media-select( ~"@{cl}auto", { width: auto; }, @min );
+    .media-select( ~"@{cl}w-auto", { width: auto; }, @min );
+    .media-select( ~"@{cl}full", { width: 100%; }, @min );
+    .media-select( ~"@{cl}w-full", { width: 100%; }, @min );
+    .media-select( ~"@{cl}half", { width: 50%; }, @min );
+    .media-select( ~"@{cl}w-half", { width: 50%; }, @min );
+    .media-select( ~"@{cl}quarter", { width: 25%; }, @min );
+    .media-select( ~"@{cl}w-quarter", { width: 25%; }, @min );
+    .media-select( ~"@{cl}third", { width: 33.3333333%; }, @min );
+    .media-select( ~"@{cl}w-third", { width: 33.3333333%; }, @min );
 
     // height;
     // unfrequently
@@ -286,9 +311,12 @@
     }
 
     // overflow;
-    .media-select( ~"@{cl}of-hd, @{cl}overflow-hidden", { overflow: hidden; }, @min );
-    .media-select( ~"@{cl}of-ot, @{cl}overflow-auto", { overflow: auto; }, @min );
-    .media-select( ~"@{cl}of-sl, @{cl}overflow-scroll", { overflow: scroll; }, @min );
+    .media-select( ~"@{cl}of-hd", { overflow: hidden; }, @min );
+    .media-select( ~"@{cl}overflow-hidden", { overflow: hidden; }, @min );
+    .media-select( ~"@{cl}of-ot", { overflow: auto; }, @min );
+    .media-select( ~"@{cl}overflow-auto", { overflow: auto; }, @min );
+    .media-select( ~"@{cl}of-sl", { overflow: scroll; }, @min );
+    .media-select( ~"@{cl}overflow-scroll", { overflow: scroll; }, @min );
 
     // box shadow
     .media-select( ~"@{cl}shadow-none", { box-shadow: none; }, @min );

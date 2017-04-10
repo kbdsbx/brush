@@ -13,7 +13,217 @@
         <script src="../lib/jquery.min.js"></script>
     </head>
     <body>
-    <div class="test">
-    </div>
+        <!-- 语义化标签 -->
+        <header>
+            <div class="contents">
+                <div class="logo">
+                    <h1>ZHAOYI.ME</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="active"><a href="/">首页</a></li>
+                        <li><a href="/article">文章</a></li>
+                        <li><a href="/gallery">图集</a></li>
+                        <li><a href="/more">更多</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section class="main">
+            <div class="contents">
+                <article>
+                    <nav class="breadcrumb">
+                        <ul>
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/article">文章</a></li>
+                            <li><a href="/article/a-1">Brush简介</a></li>
+                        </ul>
+                    </nav>
+                    <section>
+                        <div class="title">
+                            <h1>Brush：一个简单的Less库</h1>
+                            <h5>没错，它仅仅是个库。。。</h5>
+                            <small><date>2017-04-10</date><time>03:35</time></small>
+                        </div>
+                        <main>
+                            <h4>使用响应式中的媒体查询处理跨浏览器兼容</h4>
+                            <p>在以往的项目中，我们都会使用媒体查询来进行响应式处理，代码类似于<code>@media screen and ( min-width: 768px ) { ... }</code>，冗长低效且难看。less为我们提供了一种方便而又快捷的方式来处理媒体查询，并且经过Brush对主流分辨率的分割处理，现在，你可以使用类似于<code>.xs( { ... } )</code>的方式来集中处理某一分辨率下的特例代码，并且由于less允许将媒体查询代码置于样式内，于是我们可以做如下处理：</p>
+                            <p><pre class="long">
+
+    .some-class {
+        padding: 10px;
+        .xs( {
+            padding: 15px;
+        } )
+        .s( {
+            padding: 20px;
+        } );
+        .m( {
+            padding: 30px;
+        } );
+    }
+                            </pre></p>
+                            <p>经过编译后，文本将会正确编译为：</p>
+                            <p><pre class="long">
+
+    // output css
+    .some-class {
+        padding: 10px;
+    }
+    @media screen and ( min-width: 1280px ) {
+        .some-class {
+            padding: 15px;
+        }
+    }
+    @media screen and ( min-width: 1366px ) {
+        .some-class {
+            padding: 20px;
+        }
+    }
+    @media screen and ( min-width: 1440px ) {
+        .some-class {
+            padding: 30px;
+        }
+    }
+                            </pre></p>
+                            <p>值得提的一点是，由于less样式脚本在编译媒体查询过程中会产生大量的冗余，所以我们建议使用<code>clean-css</code>选项来压缩最终样式文件：</p>
+                            <p><code class="long">lessc style.less style.min.css --clean-css="advanced"</code></p>
+                            <p>而作为一个库，Brush内建了大量的基本样式，除颜色相关的样式外几乎都可以通过简单的在样式前面加前缀来声明媒体查询，例如</p>
+                            <p><pre class="long">
+
+    .some-class {
+        .padding;
+        .xs-padding-x2;
+        .s-padding-x4;
+        .m-padding-x8;
+    }
+                            </pre></p>
+                            <p>经过编译后，文本将会正确编译为：</p>
+                            <p><pre class="long">
+
+    // output css
+    .some-class {
+        padding: 15px;
+    }
+    @media screen and ( min-width: 1280px ) {
+        .some-class {
+            padding: 30px;
+        }
+    }
+    @media screen and ( min-width: 1366px ) {
+        .some-class {
+            padding: 60px;
+        }
+    }
+    @media screen and ( min-width: 1440px ) {
+        .some-class {
+            padding: 120px;
+        }
+    }
+                            </pre></p>
+                            <h4>使用简写和缩写快速添加</h4>
+                            <p>Brush对常用样式使用大量简写和缩写，并且在更常用的样式中提供不同的组合达到快速开发的目的，甚至提供了一些容易混淆的样式名称当做缺省名称表达最常用的样式</p>
+                            <p>简写样式例如:</p>
+                            <p><pre class="long">
+
+    // display
+    .none {
+        display: none;
+    }
+    .block {
+        display: block;
+    }
+    ...
+
+    // z-index
+    .z-higher-then-your-dont-where-to-go {
+        z-index: 9999999999999999999;
+    }
+    .z-high {
+        z-index: 10;
+    }
+    .z-middle {
+        z-index: 5;
+    }
+    .z-low {
+        z-index: 1;
+    }
+    ...
+
+    // width
+    .auto {
+        width: auto;
+    }
+    .full {
+        width: full;
+    }
+    .half {
+        width: half;
+    }
+    ...
+                            </pre></p>
+                            <p>缩写样式例如:</p>
+                            <p><pre class="long">
+
+    // .[class]-[directions]-[multiples], .[cl]-[dir]-[multiples]
+    .pd,
+    .padding {
+        padding: 15px;
+    }
+    .pd-no,
+    .padding-no {
+        padding: 0;
+    }
+    .pd-lt,
+    .padding-left {
+        padding-left: 15px;
+    }
+    .pd-lt-x2,
+    .padding-left-x2 {
+        padding-left: 30px;
+    }
+    .pd-lt-half,
+    .padding-left-half {
+        padding-left: 7.5px;
+    }
+    .mg,
+    .margin {
+        margin: 15px;
+    }
+    .bd,
+    .border {
+        border: 1px solid gray;
+    }
+    .bd-lt,
+    .border-left {
+        border-left: 1px solid gray;
+    }
+    .ot-lt,
+    .outline-left {
+        outline-left: 1px solid gray;
+    }
+    ...
+                            </pre></p>
+                            <p>class[cl]可选值有<code>padding[pd], margin[mg], border[bd], outline[ot]</code>；directions[dir]可选值有<code>left[lt], right[rt], top[tp], bottom[bt]</code>；multiples可选值有<code>quarter, half, x2, x4, x8, x16</code></p>
+                            <h4>移动终端优先的响应式处理</h4>
+                            <p>Brush中所有的响应式代码皆使用移动终端优先的处理方式。当更宽屏幕的样式不存在时，优先使用窄一级的设备样式，直到默认样式。也就是说，如果你需要在手机端隐藏某一元素而在PC端显示它时，你不仅要在节点中添加<code>.mxs-none</code>，还要在其中添加<code>.xs-block/.xs-flex/.xs-table...</code>等，不然的话，大于320像素分辨率的所有设备都会隐藏此元素，而不仅仅是大于320像素且小于375像素（小屏手机）的设备。</p>
+                            <h4>定制</h4>
+                            <p>如同所有使用less或sass构建的前端框架/库一样，Brush支持定制，在项目文件的variable.less中你可以看到大量原始变量和一些还未启用的变量，我们将在后续开发中添加新的功能，以保证以更简洁的语法和更快速的开发得以实现。</p>
+                            <h4>这只是个库</h4>
+                            <p>框架有一个最容易分辨的特性，就是控制反转。当使用一个框架时，其中需要的基本结构便已大致搭建完成，只需要添加相应的内部代码即可，比如说Bootstrap。</p>
+                            <p>而在Brush中并不存在这种限制，你可以用寥寥几行代码搭建自己的框架，Brush提供了大量简单易用的方法和样式帮助你创建通用的组件以便于重用。</p>
+                            <h4>简洁？并不简洁。</h4>
+                            <p>因为对元素的交叉组合，仅仅400行（main.less@0.1.1）代码编译完成后将超21000行，虽然其中遍布着独占一行的大括号。</p>
+                            <p>Brush也将会增加关于动作，动画，变换以及过渡等相应的样式库，届时将会增加更多的样式。</p>
+                            <h4>关于HTML标签语义化</h4>
+                            <p>Brush本身对语义化标签并无支持，事实上Brush本身极力避免将标签样式固定化。通常在清除原有不适合现在布局用的默认样式之后，Brush便不再改写默认样式。</p>
+                            <p>然而即使如此，我们还是推荐使用语义化标签进行结构规范，并适当添加类以便进行区分，比如说在本文章HTML文档中所有的内嵌代码段皆使用<code>&lt;code&gt;</code>标签，而在文章元信息处理上，我们使用了<code>&lt;date&gt;</code>和<code>&lt;time&gt;</code>标签，在页面结构分割时使用了<code>&lt;header&gt;</code><code>&lt;footer&gt;</code><code>&lt;section&gt;</code><code>&lt;nav&gt;</code>等，不过要注意，并不是所有的浏览器都支持这些标签，例如IE8。</p>
+                        </main>
+                    </section>
+                </article>
+            </div>
+        </section>
+        <footer>
+        </footer>
     </body>
 </html>

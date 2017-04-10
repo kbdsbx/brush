@@ -1,8 +1,129 @@
 @import "../src/brush.less";
 
-.test {
-    .mxs-none;
-    .mm-block;
-    .ml-inline;
-    .l-table;
+header {
+    .full;
+    .pd;
+    .hl-half-bg;
+    .white;
+    .font-16;
+    .flex;
+    .center;
+
+    .contents {
+        .flex;
+        .align-center;
+        .xs( {
+            width: 1024px;
+        } );
+
+        .logo {
+            .font-50;
+        }
+
+        nav {
+            ul {
+                li {
+                    .ani( margin );
+                    &.active,
+                    &:hover,
+                    &:focus {
+                        .mg-lt;
+                    }
+                }
+            }
+        }
+    }
+}
+
+section.main {
+    .flex;
+    .center;
+    .contents {
+        .xs( {
+            width: 1024px;
+        } );
+    }
+}
+
+article {
+    .gray;
+    .block-center;
+    .xs( {
+        width: 768px;
+    } );
+    nav.breadcrumb {
+        .pd-tp-half;
+        .pd-bt-half;
+        ul {
+            .flex;
+            li {
+                .hl;
+                .pd-rt-x2;
+                .relative;
+                &:after {
+                    .absolute;
+                    top: 0;
+                    right: .5em;
+                    content: ">";
+                }
+                &:last-child{
+                    .gray;
+                    &:after {
+                        content: "";
+                    }
+                }
+            }
+        }
+    }
+
+    section {
+        .title {
+            .mg-tp-x2;
+            .mg-bt-x2;
+            .full;
+            .text-center;
+
+            h1 {
+                .mg-bt-half;
+            }
+            h5 {
+                .mg-bt-half;
+            }
+        }
+        main {
+            .mg-bt-x4;
+        }
+        p {
+            line-height: 2.0em;
+            .mg-bt;
+            text-indent: 2.0em;
+        }
+        small {
+            .flex;
+            .center;
+
+            date, time {
+                .mg-lt-quarter;
+                .mg-rt-quarter;
+                .hl;
+            }
+        }
+        h4 {
+            .mg-bt;
+            .mg-tp-x2;
+        }
+        pre,
+        code {
+            .hoary-bg;
+            .hl;
+            .radius;
+            .pd-quarter;
+            .mg-lt-quarter;
+            .mg-rt-quarter;
+
+            &.long {
+                .block;
+            }
+        }
+    }
 }

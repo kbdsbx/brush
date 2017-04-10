@@ -1,5 +1,5 @@
 ### 可用class
-```css
+```less
 // colors:
 .highlight, .highlight-bg, .highlight-bd
 .hl, .hl-bg, .hl-bd
