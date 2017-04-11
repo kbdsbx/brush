@@ -1,0 +1,86 @@
+@import "variable.less";
+@import "main.less";
+
+.arrow {
+    ._arrow( 8px, @hoary, @white, top, 1px );
+}
+.arrow-full {
+    ._arrow( 8px, @white, @white, top, 0px );
+}
+
+/**
+ * 带边框的装饰角
+ *
+ * @width : 装饰角宽度
+ * @position : 装饰角位置
+ *      left
+ *      right
+ *      top
+ *      bottom
+ * @border-color : 装饰角边框颜色
+ *      @default    @gray
+ * @background-color : 装饰角背景颜色
+ *      @default    @white
+ * @border-width : 装饰角边框宽度
+ *      @default    1px
+ **/
+.arrow ( @width; @position; @border-color: @gray; @background-color: @white; @border-width : 1px ) {
+    ._arrow( @width / 2; @border-color; @position; @background-color; @border-width );
+}
+
+/**
+ * 无边框的装饰角
+ *
+ * @width : 装饰角宽度
+ * @position : 装饰角位置
+ *      left
+ *      right
+ *      top
+ *      bottom
+ * @background-color : 装饰角背景颜色
+ *      @default    @white
+ **/
+.arrow-full ( @width; @position; @background-color: @white ) {
+    ._arrow( @width / 2; @white; @background-color; @position; 0px );
+}
+
+._arrow ( @w_half; @bd-color; @bg-color : @white; @position; @bd-width : 1px ) {
+    .__pos ( @pos, @offset, @color ) when ( @pos = left ) {
+        left: -@w_half * 2 + @offset;
+        top: ~"calc( 50% - @{w_half} )";
+        border-right-color: @color;
+    }
+    .__pos ( @pos, @offset, @color ) when ( @pos = right ) {
+        right: -@w_half * 2 + @offset;
+        top: ~"calc( 50% - @{w_half} )";
+        border-left-color: @color;
+    }
+    .__pos ( @pos, @offset, @color ) when ( @pos = top ) {
+        left: ~"calc( 50% - @{w_half} )";
+        top: -@w_half * 2 + @offset;
+        border-bottom-color: @color;
+    }
+    .__pos ( @pos, @offset, @color ) when ( @pos = bottom ) {
+        left: ~"calc( 50% - @{w_half} )";
+        bottom: -@w_half * 2 + @offset;
+        border-top-color: @color;
+    }
+    &:before {
+        .absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border: @w_half solid @trans;
+        .__pos( @position, 0px, @bd-color );
+    }
+
+    &:after {
+        .absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        border: @w_half solid @trans;
+        .__pos( @position, @bd-width * 2, @bg-color );
+    }
+}
+

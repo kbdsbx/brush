@@ -16,6 +16,19 @@
     .@{color-label}-bd {
         border-color: @color;
     }
+
+    .@{color-label}-bd-lt {
+        border-left-color: @color;
+    }
+    .@{color-label}-bd-rt {
+        border-right-color: @color;
+    }
+    .@{color-label}-bd-tp {
+        border-top-color: @color;
+    }
+    .@{color-label}-bd-bt {
+        border-bottom-color: @color;
+    }
 }
 
 .make-color( highlight, @highlight );
@@ -24,6 +37,7 @@
 .make-color( white , @white );
 .make-color( gray, @gray );
 .make-color( hoary, @hoary );
+.make-color( hoary-half, @hoary, 50% );
 .make-color( black, @black );
 .make-color( trans, @trans );
 .make-color( red, @red );

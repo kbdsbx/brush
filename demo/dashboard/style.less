@@ -1,0 +1,85 @@
+@import "../../src/brush.less";
+
+header {
+    .full;
+    .pd-lt;
+    .pd-rt;
+    .white-bg;
+    .hl;
+    .font-16;
+    .flex;
+    .align-center;
+    .space-between;
+    box-shadow: 0px 2px 2px rgba( 0, 0, 0, .3 );
+
+    .logo {
+        h1 {
+            .font-16;
+        }
+    }
+
+    .head {
+        .pd-tp-half;
+        .pd-bt-half;
+        .flex;
+        .align-center;
+        h5 {
+            min-width: 4em;
+        }
+        .head-img {
+            .relative;
+            img {
+                .circle;
+                .mg-rt;
+                width: 35px;
+                height: 35px;
+            }
+
+            .dropdown {
+                .absolute;
+                .z-low;
+                .white-bg;
+                opacity: 0;
+                left: calc( -75px + 35px / 2 );
+                top: 50px;
+                width: 150px;
+
+                .ani( opacity );
+                .arrow-full ( 16px, top, fade( @hoary, 15 ) );
+
+                ul {
+                    .full;
+                    .text-center;
+                    .font-14;
+
+                    li {
+                        .gray;
+                        .pd-tp-half;
+                        .pd-bt-half;
+                        .mg-bt-half;
+                        .bd-bt-x2;
+                        .hl-half-bd;
+                        .transparency;
+                        .fade-out( ttb );
+                        .fade-out( ltr );
+                        background-color: fade( @hoary, 15 );
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .dropdown {
+                opacity: 1;
+                ul {
+                    li {
+                        .opacity;
+                        .delay ( 0s, .1s, 3 );
+                        .fade-in( ttb );
+                        .fade-in( ltr );
+                    }
+                }
+            }
+        }
+    }
+}

@@ -241,17 +241,17 @@
     }
 
     .stu_bd( border, bd );
-    .stu_bd( border, bd, x2, @pd * 2 );
-    .stu_bd( border, bd, x4, @pd * 4 );
-    .stu_bd( border, bd, x8, @pd * 8 );
-    .stu_bd( border, bd, x16, @pd * 16 );
+    .stu_bd( border, bd, x2, 2px );
+    .stu_bd( border, bd, x4, 4px );
+    .stu_bd( border, bd, x8, 8px );
+    .stu_bd( border, bd, x16, 16px );
     .stu_bd( border, bd, no, 0 );
 
     .stu_bd( outline, ot );
-    .stu_bd( outline, ot, x2, @pd * 2 );
-    .stu_bd( outline, ot, x4, @pd * 4 );
-    .stu_bd( outline, ot, x8, @pd * 8 );
-    .stu_bd( outline, ot, x16, @pd * 16 );
+    .stu_bd( outline, ot, x2, 2px );
+    .stu_bd( outline, ot, x4, 4px );
+    .stu_bd( outline, ot, x8, 8px );
+    .stu_bd( outline, ot, x16, 16px );
     .stu_bd( outline, ot, no, 0 );
 
     // border type
@@ -363,6 +363,15 @@
     }
 
     .stu_font( 50 );
+
+
+    // opacity
+    .media-select( ~"@{cl}transparency", {
+        opacity: 0;
+    }, @min );
+    .media-select( ~"@{cl}opacity", {
+        opacity: 1;
+    }, @min );
 }
 
 .make-classes();

@@ -1,5 +1,101 @@
 @import "variable.less";
+@import "main.less";
 
-.ani ( @class )  {
-    transition: @class .3s ease-in-out;
+/**
+ * 简单动画
+ *
+ * @class : 需要添加动画的css属性
+ * @duration : 动画持续时长
+ *      @default : 300ms
+ **/
+.ani ( @class, @duration : .3s )  {
+    ._ani ( @class, @duration );
 }
+
+._ani ( @class, @duration )  {
+    transition: @class @duration ease-in-out;
+}
+
+/**
+ * 动画延迟
+ *
+ * @delay : 延迟时长
+ **/
+.delay ( @delay ) {
+    ._delay ( @delay, 0s, 0 );
+}
+
+/**
+ * 将一组节点间隔相同时长进行延长
+ *
+ * @base : 基础延长时长
+ * @steps : 每个节点比上一个节点增加的延长时间
+ * @len : 节点数
+ **/
+.delay ( @base, @steps, @len ) {
+    ._delay ( @base, @steps, @len );
+}
+
+._delay ( @base, @steps, @len ) when ( @len > 0 ) {
+    &:nth-child( @{len} ) {
+        transition-delay: @base + @steps * @len;
+    }
+    .delay ( @base, @steps, @len - 1 );
+}
+._delay ( @base, @steps, @len ) when ( @len = 0 ) {
+    transition-delay: @base;
+}
+
+.__to ( @dir, @value ) when ( @dir = ltr ) {
+    left: -@value;
+}
+.__to ( @dir, @value ) when ( @dir = rtl ) {
+    right: -@value;
+}
+.__to ( @dir, @value ) when ( @dir = ttb ) {
+    top: -@value;
+}
+.__to ( @dir, @value ) when ( @dir = btt ) {
+    bottom: -@value;
+}
+
+/**
+ * 节点飘动显示
+ *
+ * @direction : 方向
+ *      ltr : 从左往右
+ *      rtl : 从右往左
+ *      ttb : 从上往下
+ *      btt : 从下往上
+ * @duration : 持续时间
+ *      @default : 200ms
+ **/
+.fade-out ( @direction; @duration : .2s ) {
+    ._fade-out( @direction; @duration );
+}
+/**
+ * 节点飘动隐藏
+ *
+ * @direction : 方向
+ *      ltr : 从左往右
+ *      rtl : 从右往左
+ *      ttb : 从上往下
+ *      btt : 从下往上
+ * @duration : 持续时间
+ *      @default : 200ms
+ **/
+.fade-in ( @direction; @duration : .2s ) {
+    ._fade-in( @direction; @duration );
+}
+
+._fade-out ( @dir; @duration; @len : 10px ) {
+    .relative;
+    transition: all @duration ease-in-out;
+    .__to ( @dir, @len );
+}
+._fade-in ( @dir; @duration ) {
+    .relative;
+    transition: all @duration ease-in-out;
+    .__to ( @dir, 0px );
+}
+
