@@ -39,7 +39,8 @@ header {
                 .absolute;
                 .z-low;
                 .white-bg;
-                opacity: 0;
+                .events-none;
+                .transparency;
                 left: calc( -75px + 35px / 2 );
                 top: 50px;
                 width: 150px;
@@ -59,9 +60,8 @@ header {
                         .mg-bt-half;
                         .bd-bt-x2;
                         .hl-half-bd;
-                        .transparency;
-                        .fade-out( ttb );
-                        .fade-out( ltr );
+                        .fade-in( ttb );
+                        .fade-in( ltr );
                         background-color: fade( @hoary, 15 );
                     }
                 }
@@ -70,16 +70,373 @@ header {
 
         &:hover {
             .dropdown {
-                opacity: 1;
+                .events-auto;
+                .opacity;
                 ul {
                     li {
-                        .opacity;
                         .delay ( 0s, .1s, 3 );
-                        .fade-in( ttb );
-                        .fade-in( ltr );
+                        .fade-out( ttb );
+                        .fade-out( ltr );
                     }
                 }
             }
         }
     }
+}
+
+section.contents {
+    aside {
+        .absolute;
+        .left;
+        height: ~"calc( 100% - 50px )";
+        width: 300px;
+        box-shadow: 2px 0 2px rgba( 0, 0, 0, .3 );
+
+        .search {
+            .pd;
+
+            form {
+                .relative;
+                .text {
+                    .full;
+                    .pd-half;
+                    .pd-lt;
+                    .pd-rt;
+                    .font-14;
+                    .bd;
+                    .hl-half-bd;
+                    .ot-no;
+                    border-radius: 15.5px;
+
+                    &:focus {
+                        & ~ .submit {
+                            transform: scale( .00001 );
+                        }
+                    }
+                }
+                .submit {
+                    .font-14;
+                    .pd-half;
+                    .bd;
+                    .bd-rt-no;
+                    .hl-half-bd;
+                    .circle;
+                    .absolute;
+                    .right;
+                    .top;
+                    .hl-half-bg;
+                    .white;
+                    .ani( transform );
+                    width: ~"calc( 1.2em + 2px + @{pd} )";
+                }
+            }
+        }
+
+        nav {
+            .relative;
+            ul {
+                .bd-bt;
+                .hoary-bd;
+                li {
+                    .bd-tp;
+                    .hoary-bd;
+                    .relative;
+                    a {
+                        .font-12;
+                        .bold;
+                        .block;
+                        .black;
+                        .pd;
+                        .ani( padding, .2s );
+                        &.focus {
+                            .bd-rt-x4;
+                            .hl-bd;
+                        }
+                        &:hover {
+                            .pd-lt-x2;
+                        }
+                    }
+
+                    &:after {
+                        .absolute;
+                        .left;
+                        .bottom;
+                        .hl-bg;
+                        .ani( width, .2s );
+                        .empty;
+                        content: "";
+                        height: 1px;
+                    }
+
+                    &:hover {
+                        &:after {
+                            .full;
+                        }
+                    }
+                }
+
+                ul {
+                    .mg-lt;
+                    .bd-no;
+                }
+            }
+        }
+    }
+    main {
+        .absolute;
+        .right;
+        .of-sl-y;
+        .pd-x2;
+        width: ~"calc( 100% - 300px )";
+        height: ~"calc( 100% - 50px )";
+
+        section {
+            article {
+                .mg-tp-x2;
+                h3 {
+                    .mg-bt;
+                }
+                p {
+                    .mg-bt;
+                    text-indent: 2.0em;
+                    line-height: 2.0em;
+                    a {
+                        .hl;
+                        .udl;
+                    }
+                }
+                table {
+                    .text-center;
+                    .mg-bt;
+                    width: 80%;
+                    border-spacing: 3px;
+
+                    th, td {
+                        .pd-half;
+                    }
+                }
+                pre,
+                code {
+                    .hoary-bg;
+                    .hl;
+                    .radius;
+                    .pd-quarter;
+                    .mg-lt-quarter;
+                    .mg-rt-quarter;
+
+                    &.long {
+                        .block;
+                    }
+                }
+                .panel {
+                    .padding;
+                    .hoary-half-bg;
+                    .mg-tp;
+                    .mg-bt;
+                    .full;
+                    
+                    .items {
+                        .full;
+                        .mg-tp;
+                        .item {
+                            .white;
+                            .hl-bg;
+                            .mg-bt-half;
+                            .mg-rt-half;
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+
+                    &.short {
+                        min-height: 50px;
+                    }
+
+                    &.middle {
+                        min-height: 150px;
+                    }
+
+                    &.long {
+                        min-height: 362.5px;
+                    }
+
+                    &.position {
+                        .relative;
+                        .items {
+                            .item {
+                                .z-low;
+                                left: 15px;
+                                top: 15px;
+                            }
+                        }
+                    }
+                    
+                    &.position-2 {
+                        .items {
+                            min-height: 150px;
+                            .relative;
+                            .item {
+                                .z-low;
+                                .absolute;
+                            }
+                        }
+                    }
+
+                    &.padding-box {
+                        .items {
+                            .hl-half-bg;
+                            .inline-block;
+                            .auto;
+
+                            .item {
+                                .pd-no;
+                                .mg-no;
+                            }
+                        }
+                    }
+                    
+                    &.border-box {
+                        .items {
+                            .hl-half-bg;
+                            .inline-block;
+                            .auto;
+
+                            .item {
+                                .pd-no;
+                                .mg-no;
+                            }
+                        }
+                    }
+
+                    &.flex-box {
+                        .items {
+                            .flex;
+                            height: 280px;
+                        }
+                    }
+                }
+
+                .make-btn-action-display ( @cl, @val ) {
+                    button.btn-@{cl}:focus ~ .items .item {
+                        @val();
+                    }
+                }
+               
+                .make-btn-action-display ( none, { .none } );
+                .make-btn-action-display ( block, { .block } );
+                .make-btn-action-display ( inline, { .inline } );
+                .make-btn-action-display ( inline-block, { .inline-block } );
+                .make-btn-action-display ( table, { .table } );
+                .make-btn-action-display ( flex, { .flex } );
+
+                .make-btn-action-display ( static, { .static } );
+                .make-btn-action-display ( absolute, { .absolute } );
+                .make-btn-action-display ( relative, { .relative } );
+                .make-btn-action-display ( fixed, { .fixed } );
+
+                .make-btn-action-display ( left, { .absolute; .left; } );
+                .make-btn-action-display ( right, { .absolute; .right } );
+                .make-btn-action-display ( top, { .absolute; .top; } );
+                .make-btn-action-display ( bottom, { .absolute; .bottom; } );
+
+                .make-btn-action ( @cl, @val ) {
+                    button.btn-@{cl}:focus ~ .items {
+                        @val();
+                    }
+                }
+
+                .make-btn-action ( flex-space, { .flex; .space-between; } );
+                .make-btn-action ( flex-center, { .flex; .center; } );
+                .make-btn-action ( flex-start, { .flex; .start; } );
+                .make-btn-action ( flex-end, { .flex; .end; } );
+                .make-btn-action ( flex-align-center, { .flex; .align-center; } );
+                .make-btn-action ( flex-align-start, { .flex; .align-start; } );
+                .make-btn-action ( flex-align-end, { .flex; .align-end; } );
+                .make-btn-action ( flex-align-stretch, { .flex; .align-stretch; } );
+                .make-btn-action ( flex-wrap, { .flex; .wrap; } );
+                .make-btn-action ( flex-column, { .flex; .column; } );
+
+                .make-btn-action ( text-center, { .text-center; } );
+                .make-btn-action ( text-left, { .text-left; } );
+                .make-btn-action ( text-right, { .text-right } );
+
+                .make-btn-action ( padding-no, { .padding-no } );
+                .make-btn-action ( padding-quarter, { .padding-quarter } );
+                .make-btn-action ( padding-half, { .padding-half } );
+                .make-btn-action ( padding, { .padding } );
+                .make-btn-action ( padding-x2, { .padding-x2 } );
+                .make-btn-action ( padding-x4, { .padding-x4 } );
+                .make-btn-action ( padding-x8, { .padding-x8 } );
+                .make-btn-action ( padding-x16, { .padding-x16 } );
+
+                .make-btn-action ( padding-top-no, { .padding-top-no } );
+                .make-btn-action ( padding-top-quarter, { .padding-top-quarter } );
+                .make-btn-action ( padding-top-half, { .padding-top-half } );
+                .make-btn-action ( padding-top, { .padding-top } );
+                .make-btn-action ( padding-top-x2, { .padding-top-x2 } );
+                .make-btn-action ( padding-top-x4, { .padding-top-x4 } );
+                .make-btn-action ( padding-top-x8, { .padding-top-x8 } );
+                .make-btn-action ( padding-top-x16, { .padding-top-x16 } );
+                
+                .make-btn-action ( margin-no, { .margin-no } );
+                .make-btn-action ( margin-quarter, { .margin-quarter } );
+                .make-btn-action ( margin-half, { .margin-half } );
+                .make-btn-action ( margin, { .margin } );
+                .make-btn-action ( margin-x2, { .margin-x2 } );
+                .make-btn-action ( margin-x4, { .margin-x4 } );
+                .make-btn-action ( margin-x8, { .margin-x8 } );
+                .make-btn-action ( margin-x16, { .margin-x16 } );
+
+                .make-btn-action ( margin-top-no, { .margin-top-no } );
+                .make-btn-action ( margin-top-quarter, { .margin-top-quarter } );
+                .make-btn-action ( margin-top-half, { .margin-top-half } );
+                .make-btn-action ( margin-top, { .margin-top } );
+                .make-btn-action ( margin-top-x2, { .margin-top-x2 } );
+                .make-btn-action ( margin-top-x4, { .margin-top-x4 } );
+                .make-btn-action ( margin-top-x8, { .margin-top-x8 } );
+                .make-btn-action ( margin-top-x16, { .margin-top-x16 } );
+                 
+                .make-btn-action ( border-no, { .border-no } );
+                .make-btn-action ( border, { .border } );
+                .make-btn-action ( border-x2, { .border-x2 } );
+                .make-btn-action ( border-x4, { .border-x4 } );
+                .make-btn-action ( border-x8, { .border-x8 } );
+                .make-btn-action ( border-x16, { .border-x16 } );
+
+                .make-btn-action ( border-top-no, { .border-top-no } );
+                .make-btn-action ( border-top, { .border-top } );
+                .make-btn-action ( border-top-x2, { .border-top-x2 } );
+                .make-btn-action ( border-top-x4, { .border-top-x4 } );
+                .make-btn-action ( border-top-x8, { .border-top-x8 } );
+                .make-btn-action ( border-top-x16, { .border-top-x16 } );
+
+                .make-btn-action ( outline-no, { .outline-no } );
+                .make-btn-action ( outline, { .outline } );
+                .make-btn-action ( outline-x2, { .outline-x2 } );
+                .make-btn-action ( outline-x4, { .outline-x4 } );
+                .make-btn-action ( outline-x8, { .outline-x8 } );
+                .make-btn-action ( outline-x16, { .outline-x16 } );
+
+                button {
+                    .pointer;
+                    .pd-half;
+                    .text-center;
+                    .mg-bt-quarter;
+                    .ani( background-color );
+                    width: 140px;
+
+                    &:focus {
+                        .hl-half-bg;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    .absolute;
+    .bottom;
+    .pd;
+    .font-12;
 }

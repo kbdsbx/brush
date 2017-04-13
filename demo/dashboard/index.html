@@ -31,7 +31,320 @@
                 </div>
             </div>
         </header>
-        <section>
+        <section class="contents">
+            <aside>
+                <div class="search">
+                    <form action="#">
+                        <input type="text" class="text" placeholder="没有用的搜索功能">
+                        <input type="submit" class="submit" value="S">
+                    </form>
+                </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#summary">Brush简介</a>
+                        </li>
+                        <li>
+                            <a class="focus">Brush手册</a>
+                            <ul>
+                                <li>
+                                    <a href="#colors" name="main">颜色</a>
+                                </li>
+                                <li>
+                                    <a href="#base">基础样式</a>
+                                </li>
+                                <li>
+                                    <a href="#flex">Flex盒模型</a>
+                                </li>
+                                <li>
+                                    <a class="focus">Bursh装饰库</a>
+                                </li>
+                                <li>
+                                    <a>Bursh动画库</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>关于Brush</a>
+                        </li>
+                        <li>
+                            <a>关于赵诣</a>
+                        </li>
+                        <li>
+                            <a>关于狂奔的扫把星</a>
+                        </li>
+                        <li>
+                            <a>凑一个选项</a>
+                        </li>
+                        <li>
+                            <a>再凑一个</a>
+                        </li>
+                    </ul>
+                </nav>
+                <footer>
+                    <p>© 这里是License或Copyright，比如此页面著作权归赵诣所有是随便写写的 | 备案: XX0000001</p>
+                </footer>
+            </aside>
+            <main name="main">
+                <section>
+                    <h1>Brush</h1>
+                </section>
+                <section id="summary">
+                    <article>
+                        <h3>Brush简介</h3>
+                        <p>一个Less库，提供了大量的易用性短标签和方法，用于快速搭建可用网站前端界面和UI。例如本页面是我用一天时间搭建起来的（呵呵，怎么可能）</p>
+                        <p>因为一个网站本身并不需要大量的微调，除非出设计稿的脑子有坑。在同一个网站中，组件与组件之间的距离最好相同或者以倍数相乘。例如在我们目前的项目<a href="http://www.unileverfoodsolutions.com.cn/">www.unileverfoodsolutions.com.cn</a>中，外部组件与组件的距离是15px，列表中项与项的距离是7.5px，底部空余距离为30px等。</p>
+                    </article>
+                </section>
+                <section id="colors">
+                    <article>
+                        <h3>颜色</h3>
+                        <p>Brush内建了多种默认颜色，并通过样式标签来设置字体，背景和边框：</p>
+                        <table>
+                            <tr>
+                                <th width="25%">色号</th>
+                                <th width="25%">字色</th>
+                                <th width="25%">背景</th>
+                                <th width="25%">边框</th>
+                            </tr>
+                            <tr>
+                                <td class="hl">#0093FF</td>
+                                <td class="hl">.hl / .highlight</td>
+                                <td class="hl-bg white">.hl-bg / .highlight-bg</td>
+                                <td class="bd hl-bd">.hl-bd / .highlight-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="hl-half">rgba(0, 147, 255, 0.5)</td>
+                                <td class="hl-half">.hl-half</td>
+                                <td class="hl-half-bg white">.hl-half-bg</td>
+                                <td class="bd hl-half-bd">.hl-half-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="gray">#808080</td>
+                                <td class="gray">.gray</td>
+                                <td class="gray-bg white">.gray-bg</td>
+                                <td class="bd gray-bd">.gray-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="hoary">#EFEFEF</td>
+                                <td class="hoary">.hoary</td>
+                                <td class="hoary-bg black">.hoary-bg</td>
+                                <td class="bd hoary-bd">.hoary-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="hoary-half">rgba(239, 239, 239, 0.5)</td>
+                                <td class="hoary-half">.hoary-half</td>
+                                <td class="hoary-half-bg black">.hoary-half-bg</td>
+                                <td class="bd hoary-half-bd">.hoary-half-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="white">#FFFFFF</td>
+                                <td class="white">.white</td>
+                                <td class="white-bg black">.white-bg</td>
+                                <td class="bd white-bd">.white-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="black">#000000</td>
+                                <td class="black">.black</td>
+                                <td class="black-bg white">.black-bg</td>
+                                <td class="bd black-bd">.black-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="trans black">rgba( 0, 0, 0, 0 )</td>
+                                <td class="trans">.trans</td>
+                                <td class="trans-bg black">.trans-bg</td>
+                                <td class="bd trans-bd">.trans-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="red">#FE421D</td>
+                                <td class="red">.red</td>
+                                <td class="red-bg white">.red-bg</td>
+                                <td class="bd red-bd">.red-bd</td>
+                            </tr>
+                            <tr>
+                                <td class="green">#339933</td>
+                                <td class="green">.green</td>
+                                <td class="green-bg white">.green-bg</td>
+                                <td class="bd green-bd">.green-bd</td>
+                            </tr>
+                        </table>
+                        <p><code>.highlight</code>是网站的设计主色调，在使用过程中可以重命名颜色或重新定义颜色。比如使用<code>@font-color : @gray</code>定义文字的基本颜色等。</p>
+                    </article>
+                </section>
+                <section id="base">
+                    <article>
+                        <h3>基础样式</h3>
+                        <p>Display:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel long">
+                            <button class="btn-none">.none</button>
+                            <button class="btn-block">.block</button>
+                            <button class="btn-inline">.inline</button>
+                            <button class="btn-inline-block">.inline-block</button>
+                            <button class="btn-table">.table</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Alignment:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel short">
+                            <button class="btn-text-left">.text-left</button>
+                            <button class="btn-text-center">.text-center</button>
+                            <button class="btn-text-right">.text-right</button>
+                            <br>
+                            <div class="items">
+                                这是一条文本内容
+                            </div>
+                        </div>
+                        <p>Position:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel short position">
+                            <button class="btn-static">.static</button>
+                            <button class="btn-absolute">.absolute</button>
+                            <button class="btn-relative">.relative</button>
+                            <button class="btn-fixed">.fixed</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Position:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel position-2">
+                            <button class="btn-left">.absolute.left</button>
+                            <button class="btn-right">.absolute.right</button>
+                            <button class="btn-top">.absolute.top</button>
+                            <button class="btn-bottom">.absolute.bottom</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Padding:</p>
+                        <p>padding是包含在盒子的模型内的（但不包含在contents内），所以当你在结构上应用背景颜色时，padding部分也会使用这个颜色。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：<u>其中top可以替换为bottom、left和right</u></i></p>
+                        <div class="panel long padding-box">
+                            <button class="btn-padding-no">.padding-no</button>
+                            <button class="btn-padding-quarter">.padding-quarter</button>
+                            <button class="btn-padding-half">.padding-half</button>
+                            <button class="btn-padding">.padding</button>
+                            <button class="btn-padding-x2">.padding-x2</button>
+                            <button class="btn-padding-x4">.padding-x4</button>
+                            <button class="btn-padding-x8">.padding-x8</button>
+                            <button class="btn-padding-x16">.padding-x16</button>
+                            <br>
+                            <button class="btn-padding-top-no">.padding-top-no</button>
+                            <button class="btn-padding-top-quarter">.padding-top-quarter</button>
+                            <button class="btn-padding-top-half">.padding-top-half</button>
+                            <button class="btn-padding-top">.padding-top</button>
+                            <button class="btn-padding-top-x2">.padding-top-x2</button>
+                            <button class="btn-padding-top-x4">.padding-top-x4</button>
+                            <button class="btn-padding-top-x8">.padding-top-x8</button>
+                            <button class="btn-padding-top-x16">.padding-top-x16</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Margin:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：<u>其中top可以替换为bottom、left和right</u></i></p>
+                        <div class="panel long padding-box">
+                            <button class="btn-margin-no">.margin-no</button>
+                            <button class="btn-margin-quarter">.margin-quarter</button>
+                            <button class="btn-margin-half">.margin-half</button>
+                            <button class="btn-margin">.margin</button>
+                            <button class="btn-margin-x2">.margin-x2</button>
+                            <button class="btn-margin-x4">.margin-x4</button>
+                            <button class="btn-margin-x8">.margin-x8</button>
+                            <button class="btn-margin-x16">.margin-x16</button>
+                            <br>
+                            <button class="btn-margin-top-no">.margin-top-no</button>
+                            <button class="btn-margin-top-quarter">.margin-top-quarter</button>
+                            <button class="btn-margin-top-half">.margin-top-half</button>
+                            <button class="btn-margin-top">.margin-top</button>
+                            <button class="btn-margin-top-x2">.margin-top-x2</button>
+                            <button class="btn-margin-top-x4">.margin-top-x4</button>
+                            <button class="btn-margin-top-x8">.margin-top-x8</button>
+                            <button class="btn-margin-top-x16">.margin-top-x16</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Border:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：<u>其中top可以替换为bottom、left和right</u></i></p>
+                        <div class="panel long border-box">
+                            <button class="btn-border-no">.border-no</button>
+                            <button class="btn-border">.border</button>
+                            <button class="btn-border-x2">.border-x2</button>
+                            <button class="btn-border-x4">.border-x4</button>
+                            <button class="btn-border-x8">.border-x8</button>
+                            <button class="btn-border-x16">.border-x16</button>
+                            <br>
+                            <button class="btn-border-top-no">.border-top-no</button>
+                            <button class="btn-border-top">.border-top</button>
+                            <button class="btn-border-top-x2">.border-top-x2</button>
+                            <button class="btn-border-top-x4">.border-top-x4</button>
+                            <button class="btn-border-top-x8">.border-top-x8</button>
+                            <button class="btn-border-top-x16">.border-top-x16</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Outline:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：<s>其中top可以替换为bottom、left和right</s>&nbsp;<u>outline没有outline-top、outline-bottom、outline-left和outline-right</u></i></p>
+                        <div class="panel long border-box">
+                            <button class="btn-outline-no">.outline-no</button>
+                            <button class="btn-outline">.outline</button>
+                            <button class="btn-outline-x2">.outline-x2</button>
+                            <button class="btn-outline-x4">.outline-x4</button>
+                            <button class="btn-outline-x8">.outline-x8</button>
+                            <button class="btn-outline-x16">.outline-x16</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <section id="flex">
+                    <article>
+                        <h3>使用Flex布局</h3>
+                        <p>我们十分推荐使用Flex盒模型进行布局，Flex经过几次大的修改，曾命名为box，flex-box，直到现在Chrome以及FireFox还支持以<code>display: box;</code>为基础的盒模型。</p>
+                        <p>盒模型很好的解决了块状组件在容器中的布局问题，尤其是另过去前端开发工作者们备受困扰的上下居中，甚至通过<code>justicy-content: space-between</code>创建了相等间隔的排布，这让我想起了Bootstrap开发者不得不引入<code>row { margin-left: -15px; margin-right: -15px; }</code>才解决此问题（但不得不说当时的解决方法即时在现在看来也很巧妙）。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel flex-box">
+                            <button class="btn-flex-space">.flex.space-between</button>
+                            <button class="btn-flex-center">.flex.center</button>
+                            <button class="btn-flex-start">.flex.start</button>
+                            <button class="btn-flex-end">.flex.end</button>
+                            <button class="btn-flex-align-center">.flex.align-center</button>
+                            <button class="btn-flex-align-start">.flex.align-start</button>
+                            <button class="btn-flex-align-end">.flex.align-end</button>
+                            <button class="btn-flex-align-stretch">.flex.align-stretch</button>
+                            <button class="btn-flex-wrap">.flex.wrap</button>
+                            <button class="btn-flex-column">.flex.column</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </main>
         </section>
     </body>
 </html>

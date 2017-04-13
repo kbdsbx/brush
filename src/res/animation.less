@@ -13,7 +13,7 @@
 }
 
 ._ani ( @class, @duration )  {
-    transition: @class @duration ease-in-out;
+    transition+: @class @duration ease-in-out;
 }
 
 /**
@@ -37,7 +37,7 @@
 }
 
 ._delay ( @base, @steps, @len ) when ( @len > 0 ) {
-    &:nth-child( @{len} ) {
+    &:nth-child(@{len}) {
         transition-delay: @base + @steps * @len;
     }
     .delay ( @base, @steps, @len - 1 );
@@ -60,7 +60,7 @@
 }
 
 /**
- * 节点飘动显示
+ * 节点缓动显示
  *
  * @direction : 方向
  *      ltr : 从左往右
@@ -74,7 +74,7 @@
     ._fade-out( @direction; @duration );
 }
 /**
- * 节点飘动隐藏
+ * 节点缓动隐藏
  *
  * @direction : 方向
  *      ltr : 从左往右
@@ -83,19 +83,31 @@
  *      btt : 从下往上
  * @duration : 持续时间
  *      @default : 200ms
+ * @length : 缓动距离
+ *      @default : 10px;
  **/
-.fade-in ( @direction; @duration : .2s ) {
-    ._fade-in( @direction; @duration );
+.fade-in ( @direction; @duration : .2s; @length : 10px ) {
+    ._fade-in( @direction; @duration; @length );
 }
 
-._fade-out ( @dir; @duration; @len : 10px ) {
+._fade-out ( @dir; @duration ) {
     .relative;
-    transition: all @duration ease-in-out;
-    .__to ( @dir, @len );
-}
-._fade-in ( @dir; @duration ) {
-    .relative;
-    transition: all @duration ease-in-out;
+    .opacity;
+    transition+: opacity @duration ease-in-out;
+    transition+: left @duration ease-in-out;
+    transition+: right @duration ease-in-out;
+    transition+: top @duration ease-in-out;
+    transition+: bottom @duration ease-in-out;
     .__to ( @dir, 0px );
+}
+._fade-in ( @dir; @duration; @len ) {
+    .relative;
+    .transparency;
+    transition+: opacity @duration ease-in-out;
+    transition+: left @duration ease-in-out;
+    transition+: right @duration ease-in-out;
+    transition+: top @duration ease-in-out;
+    transition+: bottom @duration ease-in-out;
+    .__to ( @dir, @len );
 }
 

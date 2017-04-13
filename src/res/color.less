@@ -2,10 +2,10 @@
 
 .make-color ( @color-label, @color, @fade-amount : 100% ) {
     .@{color-label}, .@{color-label}:hover, .@{color-label}:focus {
-        color: @color;
+        color: fade( @color, @fade-amount );
 
         a {
-            color: @color;
+            color: fade( @color, @fade-amount );
         }
     }
 
@@ -14,20 +14,20 @@
     }
 
     .@{color-label}-bd {
-        border-color: @color;
+        border-color: fade( @color, @fade-amount );
     }
 
     .@{color-label}-bd-lt {
-        border-left-color: @color;
+        border-left-color: fade( @color, @fade-amount );
     }
     .@{color-label}-bd-rt {
-        border-right-color: @color;
+        border-right-color: fade( @color, @fade-amount );
     }
     .@{color-label}-bd-tp {
-        border-top-color: @color;
+        border-top-color: fade( @color, @fade-amount );
     }
     .@{color-label}-bd-bt {
-        border-bottom-color: @color;
+        border-bottom-color: fade( @color, @fade-amount );
     }
 }
 
@@ -39,7 +39,7 @@
 .make-color( hoary, @hoary );
 .make-color( hoary-half, @hoary, 50% );
 .make-color( black, @black );
-.make-color( trans, @trans );
+.make-color( trans, @trans, 0% );
 .make-color( red, @red );
 .make-color( green, @green );
 

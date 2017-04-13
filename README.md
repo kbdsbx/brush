@@ -68,6 +68,11 @@
 // overflow:
 .overflow-hidden, overflow-auto, overflow-scroll
 .of-hd, .of-ot, .of-sl
+.of-hd-x, .of-ot-x, .of-sl-x
+.of-hd-y, .of-ot-y, .of-sl-y
+
+// box shadow
+.shadow-none
 
 // text decoration
 .udl, .orl, .thl, .nl
@@ -87,6 +92,11 @@
 // opacity
 .transparent, .opacity
 
+// pointer-events
+.events-none, .events-all, .events-auto
+
+// cursor
+.pointer
 
 /**    复合样式    **/
 
@@ -227,7 +237,7 @@
 .delay ( @base, @steps, @len )
 
 /**
- * 节点飘动显示
+ * 节点缓动显示
  *
  * @direction : 方向
  *      ltr : 从左往右
@@ -240,7 +250,7 @@
 .fade-out ( @direction; @duration )
 
 /**
- * 节点飘动隐藏
+ * 节点缓动隐藏
  *
  * @direction : 方向
  *      ltr : 从左往右
@@ -249,8 +259,10 @@
  *      btt : 从下往上
  * @duration : 持续时间
  *      @default : 200ms
+ * @length : 缓动距离
+ *      @default : 10px;
  **/
-.fade-in ( @direction; @duration )
+.fade-in ( @direction; @duration; @length )
 
 
 ```
