@@ -38,7 +38,6 @@ header {
             .dropdown {
                 .absolute;
                 .z-low;
-                .white-bg;
                 .events-none;
                 .transparency;
                 left: calc( -75px + 35px / 2 );
@@ -308,6 +307,27 @@ section.contents {
                         }
                     }
 
+                    &.p-box {
+                        .items {
+                            .item {
+                                .block;
+                                .trans-bg;
+                                .black;
+                                .text-center;
+                                .full;
+                                .h-auto;
+                                .pd-no;
+                                .mg-no;
+                            }
+                        }
+                    }
+
+                    &.border-x2-box {
+                        .item {
+                            .bd-x2;
+                        }
+                    }
+
                     &.flex-box {
                         .items {
                             .flex;
@@ -338,6 +358,41 @@ section.contents {
                 .make-btn-action-display ( right, { .absolute; .right } );
                 .make-btn-action-display ( top, { .absolute; .top; } );
                 .make-btn-action-display ( bottom, { .absolute; .bottom; } );
+
+                .make-btn-action-display ( radius-no, { .radius-no } );
+                .make-btn-action-display ( radius, { .radius } );
+                .make-btn-action-display ( circle, { .circle } );
+
+                .make-btn-action-display ( auto, { .auto } );
+                .make-btn-action-display ( full, { .full } );
+                .make-btn-action-display ( half, { .half } );
+                .make-btn-action-display ( third, { .third } );
+                .make-btn-action-display ( quarter, { .quarter } );
+                .make-btn-action-display ( empty, { .empty } );
+
+                .make-btn-action-display ( opacity, { .opacity } );
+                .make-btn-action-display ( transparency, { .transparency } );
+
+                .make-btn-action-display ( arrow-full-left, { .relative; .arrow-full( 16px, left, @hl ) } );
+                .make-btn-action-display ( arrow-full-right, { .relative; .arrow-full( 16px, right, @hl ) } );
+                .make-btn-action-display ( arrow-full-top, { .relative; .arrow-full( 16px, top, @hl ) } );
+                .make-btn-action-display ( arrow-full-bottom, { .relative; .arrow-full( 16px, bottom, @hl ) } );
+
+                .make-btn-action-display ( arrow-left, { .relative; .arrow( 16px, left, @gray, @hl, 2px ) } );
+                .make-btn-action-display ( arrow-right, { .relative; .arrow( 16px, right, @gray, @hl, 2px ) } );
+                .make-btn-action-display ( arrow-top, { .relative; .arrow( 16px, top, @gray, @hl, 2px ) } );
+                .make-btn-action-display ( arrow-bottom, { .relative; .arrow( 16px, bottom, @gray, @hl, 2px ) } );
+
+                .make-btn-action-display ( line, { .relative; .line( 9 ) } );
+                .make-btn-action-display ( line-left, { .relative; .line-left( 9 ) } );
+                .make-btn-action-display ( line-right, { .relative; .line-right( 9 ) } );
+                .make-btn-action-display ( line-2, { .relative; .line( 9, 16px, @hl ) } );
+
+                .make-btn-action-display ( flex-line, { .flex-line() } );
+                .make-btn-action-display ( flex-line-left, { .flex-line-left() } );
+                .make-btn-action-display ( flex-line-right, { .flex-line-right() } );
+                .make-btn-action-display ( flex-line-2, { .flex-line( 16px, @hl ) } );
+
 
                 .make-btn-action ( @cl, @val ) {
                     button.btn-@{cl}:focus ~ .items {
@@ -417,6 +472,43 @@ section.contents {
                 .make-btn-action ( outline-x8, { .outline-x8 } );
                 .make-btn-action ( outline-x16, { .outline-x16 } );
 
+                .make-btn-action ( solid, { .bd-x4; .solid } );
+                .make-btn-action ( dotted, { .bd-x4; .dotted } );
+                .make-btn-action ( dashed, { .bd-x4; .dashed } );
+                .make-btn-action ( double, { .bd-x4; .double } );
+
+                .make-btn-action ( udl, { .udl } );
+                .make-btn-action ( orl, { .orl } );
+                .make-btn-action ( thl, { .thl } );
+                .make-btn-action ( nl, { .nl } );
+
+                .make-btn-action ( lighter, { .lighter } );
+                .make-btn-action ( normal, { .normal } );
+                .make-btn-action ( bold, { .bold } );
+
+                .make-btn-action ( font-8, { .font-8 } );
+                .make-btn-action ( font-10, { .font-10 } );
+                .make-btn-action ( font-12, { .font-12 } );
+                .make-btn-action ( font-14, { .font-14 } );
+                .make-btn-action ( font-16, { .font-16 } );
+                .make-btn-action ( font-18, { .font-18 } );
+                .make-btn-action ( font-20, { .font-20 } );
+                .make-btn-action ( font-22, { .font-22 } );
+                .make-btn-action ( font-24, { .font-24 } );
+                .make-btn-action ( font-26, { .font-26 } );
+                .make-btn-action ( font-28, { .font-28 } );
+                .make-btn-action ( font-30, { .font-30 } );
+                .make-btn-action ( font-32, { .font-32 } );
+                .make-btn-action ( font-34, { .font-34 } );
+                .make-btn-action ( font-36, { .font-36 } );
+                .make-btn-action ( font-38, { .font-38 } );
+                .make-btn-action ( font-40, { .font-40 } );
+                .make-btn-action ( font-42, { .font-42 } );
+                .make-btn-action ( font-44, { .font-44 } );
+                .make-btn-action ( font-46, { .font-46 } );
+                .make-btn-action ( font-48, { .font-48 } );
+                .make-btn-action ( font-50, { .font-50 } );
+
                 button {
                     .pointer;
                     .pd-half;
@@ -424,6 +516,10 @@ section.contents {
                     .mg-bt-quarter;
                     .ani( background-color );
                     width: 140px;
+
+                    &.long {
+                        width: 400px;
+                    }
 
                     &:focus {
                         .hl-half-bg;

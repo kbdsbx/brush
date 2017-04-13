@@ -48,15 +48,19 @@
 
 .__to ( @dir, @value ) when ( @dir = ltr ) {
     left: -@value;
+    transition+: left @duration ease-in-out;
 }
 .__to ( @dir, @value ) when ( @dir = rtl ) {
     right: -@value;
+    transition+: right @duration ease-in-out;
 }
 .__to ( @dir, @value ) when ( @dir = ttb ) {
     top: -@value;
+    transition+: top @duration ease-in-out;
 }
 .__to ( @dir, @value ) when ( @dir = btt ) {
     bottom: -@value;
+    transition+: bottom @duration ease-in-out;
 }
 
 /**
@@ -94,20 +98,12 @@
     .relative;
     .opacity;
     transition+: opacity @duration ease-in-out;
-    transition+: left @duration ease-in-out;
-    transition+: right @duration ease-in-out;
-    transition+: top @duration ease-in-out;
-    transition+: bottom @duration ease-in-out;
     .__to ( @dir, 0px );
 }
 ._fade-in ( @dir; @duration; @len ) {
     .relative;
     .transparency;
     transition+: opacity @duration ease-in-out;
-    transition+: left @duration ease-in-out;
-    transition+: right @duration ease-in-out;
-    transition+: top @duration ease-in-out;
-    transition+: bottom @duration ease-in-out;
     .__to ( @dir, @len );
 }
 

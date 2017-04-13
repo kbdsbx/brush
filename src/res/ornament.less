@@ -25,7 +25,7 @@
  *      @default    1px
  **/
 .arrow ( @width; @position; @border-color: @gray; @background-color: @white; @border-width : 1px ) {
-    ._arrow( @width / 2; @border-color; @position; @background-color; @border-width );
+    ._arrow( @width / 2; @border-color; @background-color; @position; @border-width );
 }
 
 /**
@@ -84,3 +84,142 @@
     }
 }
 
+
+/**
+ * 装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line ( @text-length; @width : 1px; @color : @gray ) {
+    ._line ( @text-length; @width; @color );
+}
+
+/**
+ * 左装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line-left ( @text-length; @width : 1px; @color : @gray ) {
+    ._line ( @text-length; @width; @color; true; false );
+}
+
+/**
+ * 右装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line-right ( @text-length; @width : 1px; @color : @gray ) {
+    ._line ( @text-length; @width; @color; false; true );
+}
+
+._line ( @len; @width; @color; @left : true; @right : true ) {
+    .relative;
+
+    @_len : @len / 2;
+    @_w : @width / 2;
+
+    & when ( @left = true ) {
+        &:before {
+            .mg-rt;
+            .absolute;
+            .left;
+            content: "";
+            height: @width;
+            width: ~"calc( 50% - @{_len}em - @{pd} )";
+            top: ~"calc( 50% - @{_w} )";
+            background-color: @color;
+        }
+    }
+
+    & when ( @right = true ) {
+        &:after {
+            .mg-lt;
+            .absolute;
+            .right;
+            content: "";
+            height: @width;
+            width: ~"calc( 50% - @{_len}em - @{pd} )";
+            top: ~"calc( 50% - @{_w} )";
+            background-color: @color;
+        }
+    }
+}
+
+/**
+ * Flex装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line ( @width : 1px; @color : @gray ) {
+    ._flex-line ( @width; @color );
+}
+
+/**
+ * Flex左装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line-left ( @width : 1px; @color : @gray ) {
+    ._flex-line ( @width; @color; true; false );
+}
+
+/**
+ * Flex右装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line-right ( @width : 1px; @color : @gray ) {
+    ._flex-line ( @width; @color; false; true );
+}
+
+._flex-line ( @width; @color; @left : true; @right : true ) {
+    .flex;
+    .space-between;
+    .align-center;
+    .center;
+    
+    &:before {
+        .mg-rt;
+        content: "";
+        height: @width;
+        .trans-bg;
+        & when ( @left = true ) {
+            background-color: @color;
+        }
+        flex-basis : 0;
+        flex-grow: 100;
+    }
+
+    &:after {
+        .mg-lt;
+        content: "";
+        height: @width;
+        .trans-bg;
+        & when ( @right = true ) {
+            background-color: @color;
+        }
+        flex-basis : 0;
+        flex-grow: 100;
+    }
+}

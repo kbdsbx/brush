@@ -48,19 +48,19 @@
                             <a class="focus">Brush手册</a>
                             <ul>
                                 <li>
-                                    <a href="#colors" name="main">颜色</a>
+                                    <a href="#colors" class="focus" name="main">颜色</a>
                                 </li>
                                 <li>
-                                    <a href="#base">基础样式</a>
+                                    <a href="#base" name="main">基础样式</a>
                                 </li>
                                 <li>
-                                    <a href="#flex">Flex盒模型</a>
+                                    <a href="#more" name="main">复合样式、组件</a>
                                 </li>
                                 <li>
-                                    <a class="focus">Bursh装饰库</a>
+                                    <a href="#flex" name="main">Flex盒模型</a>
                                 </li>
                                 <li>
-                                    <a>Bursh动画库</a>
+                                    <a href="#animation" name="main">简单动画</a>
                                 </li>
                             </ul>
                         </li>
@@ -279,7 +279,7 @@
                         </div>
                         <p>Border:</p>
                         <p><i>通过点击按钮熟悉不同样式的区别：<u>其中top可以替换为bottom、left和right</u></i></p>
-                        <div class="panel long border-box">
+                        <div class="panel middle border-box">
                             <button class="btn-border-no">.border-no</button>
                             <button class="btn-border">.border</button>
                             <button class="btn-border-x2">.border-x2</button>
@@ -300,7 +300,7 @@
                         </div>
                         <p>Outline:</p>
                         <p><i>通过点击按钮熟悉不同样式的区别：<s>其中top可以替换为bottom、left和right</s>&nbsp;<u>outline没有outline-top、outline-bottom、outline-left和outline-right</u></i></p>
-                        <div class="panel long border-box">
+                        <div class="panel middle border-box">
                             <button class="btn-outline-no">.outline-no</button>
                             <button class="btn-outline">.outline</button>
                             <button class="btn-outline-x2">.outline-x2</button>
@@ -310,6 +310,171 @@
                             <br>
                             <div class="items">
                                 <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Border Type:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle border-box">
+                            <button class="btn-solid">.solid</button>
+                            <button class="btn-dotted">.dotted</button>
+                            <button class="btn-dashed">.dashed</button>
+                            <button class="btn-double">.double</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Border radius:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-radius-no">.radius-no</button>
+                            <button class="btn-radius">.radius</button>
+                            <button class="btn-circle">.circle</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Width:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-auto">.auto</button>
+                            <button class="btn-full">.full</button>
+                            <button class="btn-half">.half</button>
+                            <button class="btn-third">.third</button>
+                            <button class="btn-quarter">.quarter</button>
+                            <button class="btn-empty">.empty</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Text decoration:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-udl">.udl</button>
+                            <button class="btn-orl">.orl</button>
+                            <button class="btn-thl">.thl</button>
+                            <button class="btn-nl">.nl</button>
+                            <br>
+                            <div class="items">
+                                这是一条文本内容
+                            </div>
+                        </div>
+                        <p>Font weight:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-lighter">.lighter</button>
+                            <button class="btn-normal">.normal</button>
+                            <button class="btn-bold">.bold</button>
+                            <br>
+                            <div class="items">
+                                这是一条文本内容
+                            </div>
+                        </div>
+                        <p>Font size:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-font-8">.font-8</button>
+                            <button class="btn-font-10">.font-10</button>
+                            <button class="btn-font-12">.font-12</button>
+                            <button class="btn-font-14">.font-14</button>
+                            <button class="btn-font-16">.font-16</button>
+                            <button class="btn-font-18">.font-18</button>
+                            <button class="btn-font-20">.font-20</button>
+                            <button class="btn-font-22">.font-22</button>
+                            <button class="btn-font-24">.font-24</button>
+                            <button class="btn-font-26">.font-26</button>
+                            <button class="btn-font-28">.font-28</button>
+                            <button class="btn-font-30">.font-30</button>
+                            <button class="btn-font-32">.font-32</button>
+                            <button class="btn-font-34">.font-34</button>
+                            <button class="btn-font-36">.font-36</button>
+                            <button class="btn-font-38">.font-38</button>
+                            <button class="btn-font-40">.font-40</button>
+                            <button class="btn-font-42">.font-42</button>
+                            <button class="btn-font-44">.font-44</button>
+                            <button class="btn-font-46">.font-46</button>
+                            <button class="btn-font-48">.font-48</button>
+                            <button class="btn-font-50">.font-50</button>
+                            <br>
+                            <div class="items">
+                                这是一条文本内容
+                            </div>
+                        </div>
+
+                        <p>Opacity:</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-opacity">.opacity</button>
+                            <button class="btn-transparency">.transparency</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <br>
+                        <p>更多样式详见ReadMe</p>
+                    </article>
+                </section>
+                <section id="more">
+                    <article>
+                        <h3>复合样式、组件</h3>
+                        <p>我们将一直完善复合样式及组件，将大量需要重复工作但极其通用的组件抽象出来组成方法集成在Brush中。</p>
+                        <br>
+                        <p>装饰角：</p>
+                        <p>注意：实心装饰角需要占用元素的<code>:before</code>伪类，而带边框的装饰角需要占用<code>:before</code>和<code>:after</code>两个伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="long btn-arrow-full-left">.relative.arrow-full( 16px, left, @hl )</button>
+                            <button class="long btn-arrow-full-right">.relative.arrow-full( 16px, right, @hl )</button>
+                            <button class="long btn-arrow-full-top">.relative.arrow-full( 16px, top, @hl )</button>
+                            <button class="long btn-arrow-full-bottom">.relative.arrow-full( 16px, bottom, @hl )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle border-x2-box">
+                            <button class="long btn-arrow-left">.relative.arrow( 16px, left, @gray, @hl, 1px )</button>
+                            <button class="long btn-arrow-right">.relative.arrow( 16px, right, @gray, @hl, 1px )</button>
+                            <button class="long btn-arrow-top">.relative.arrow( 16px, top, @gray, @hl, 1px )</button>
+                            <button class="long btn-arrow-bottom">.relative.arrow( 16px, bottom, @gray, @hl, 1px )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Brush提供默认的样式<code>.arrow</code>以及<code>.arrow-full</code>，用于灰色边框白色背景的边框装饰角和纯白色背景的无边框装饰角。当然大部分情况下使用者需要自定义参数，故建议使用带参数的方法进行添加。</p>
+                        <p>默认情况下Brush的装饰角会沿边居中，若你需要调整其在边框的位置，需要在调用方法后自行添加样式覆盖，例如：<code>top: 10%</code>。</p>
+                        <br>
+                        <p>装饰线：</p>
+                        <p>注意：装饰线需要占用元素的<code>:before</code>和/或<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle p-box">
+                            <button class="btn-line">.line( 9 )</button>
+                            <button class="btn-line-left">.line-left( 9 )</button>
+                            <button class="btn-line-right">.line-right( 9 )</button>
+                            <button class="btn-line-2">.line( 9, 16px, @hl )</button>
+                            <br>
+                            <div class="items">
+                                <h4 class="item">这里是一条文本标题</h4>
+                            </div>
+                        </div>
+
+                        <p>Flex装饰线：</p>
+                        <p>Flex装饰线会使用<code>display: flex</code>覆盖节点原本的显示方式，即便这样我们还是推荐使用Flex装饰线。与普通装饰线不同的是，<b>Flex装饰线不需要指定标题的文字数量，而是通过盒模型自适应装饰线宽度</b>，当然此样式需要目标浏览器对Flex盒模型的几乎完全的支持。</p>
+                        <p>注意：装饰线需要占用元素的<code>:before</code>和<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle p-box">
+                            <button class="btn-flex-line">.flex-line()</button>
+                            <button class="btn-flex-line-left">.flex-line-left()</button>
+                            <button class="btn-flex-line-right">.flex-line-right()</button>
+                            <button class="btn-flex-line-2">.flex-line( 16px, @hl )</button>
+                            <br>
+                            <div class="items">
+                                <h4 class="item">这里是一条文本标题</h4>
                             </div>
                         </div>
                     </article>
@@ -342,6 +507,12 @@
                                 <div class="item">内容</div>
                             </div>
                         </div>
+                    </article>
+                </section>
+                <section id="animation">
+                    <article>
+                        <h3>简单动画</h3>
+                        <p>自从CSS3支持缓动函数以来，动态效果的制作变得越来越快速，也越来越强大。Brush也在其基础上添加了一些简单的支持函数，用于使用者快速添加动画而避免无谓的细节。</p>
                     </article>
                 </section>
             </main>

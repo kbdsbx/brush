@@ -45,7 +45,7 @@
 .outline-[directions]-[multiples], .ot-[dir]-[multiples]
 
 // border style:
-.solid, .dotted, .dashed
+.solid, .dotted, .dashed, .double
 
 // border radius:
 .radius-no, .radius, .circle
@@ -207,6 +207,69 @@
  **/
 .arrow-full ( @width; @position; @background-color )
 
+/**
+ * 装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line ( @text-length; @width; @color )
+
+/**
+ * 左装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line-left ( @text-length; @width; @color )
+
+/**
+ * 右装饰线
+ *
+ * @text-length : 内容文本字数
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.line-right ( @text-length; @width; @color )
+
+/**
+ * Flex装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line ( @width; @color )
+
+/**
+ * Flex左装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line-left ( @width; @color )
+
+
+/**
+ * Flex右装饰线
+ *
+ * @width : 装饰线宽度
+ *      @default : 1px
+ * @color : 装饰线颜色
+ *      @default : @gray
+ **/
+.flex-line-right ( @width; @color )
 
 /**    动画    **/
 
