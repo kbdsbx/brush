@@ -93,7 +93,7 @@
                     <article>
                         <h3>Brush简介</h3>
                         <p>一个Less库，提供了大量的易用性短标签和方法，用于快速搭建可用网站前端界面和UI。例如本页面是我用一天时间搭建起来的（呵呵，怎么可能）</p>
-                        <p>因为一个网站本身并不需要大量的微调，除非出设计稿的脑子有坑。在同一个网站中，组件与组件之间的距离最好相同或者以倍数相乘。例如在我们目前的项目<a href="http://www.unileverfoodsolutions.com.cn/">www.unileverfoodsolutions.com.cn</a>中，外部组件与组件的距离是15px，列表中项与项的距离是7.5px，底部空余距离为30px等。</p>
+                        <p>出于对简化开发的探索，Brush尝试在Less的基础上，结合CSS3进行大规模的精简、组合。我们不满足于基础样式的样式标签简化，而在通用性装饰和动画上作出进一步探索，尝试将样式代码封装成一个个方法以供调用。就像我们曾经在C语言或其他编译型语言中所做过的事一样。</p>
                     </article>
                 </section>
                 <section id="colors">
@@ -420,7 +420,8 @@
                 <section id="more">
                     <article>
                         <h3>复合样式、组件</h3>
-                        <p>我们将一直完善复合样式及组件，将大量需要重复工作但极其通用的组件抽象出来组成方法集成在Brush中。</p>
+                        <p>复合样式、组件会将基础样式组合起来成为一个可以通用的组件，自由添加在需要的节点上。同样为了保证定制化，我们将其做成方法以供调用，而且大部分组件会提供一个或几个默认样式用于快速添加。由于复合样式、组件是由多个基本样式组成，其样式难免会被既有样式覆盖，导致样式错误，故而请谨慎使用；避免此问题的最佳途径就是页面结构部件化（Componentization），降低样式耦合性。</p>
+                        <p>为保证样式与结构分离，我们会尽最大努力不去添加任何可能的多余文档标签，例如装饰用的<code>&lt;em&gt;</code>或者<code>&lt;span&gt;</code>，而是使用被装饰的标签自带的伪类例如<code>:before</code>和<code>:after</code>。</p>
                         <br>
                         <p>装饰角：</p>
                         <p>注意：实心装饰角需要占用元素的<code>:before</code>伪类，而带边框的装饰角需要占用<code>:before</code>和<code>:after</code>两个伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
@@ -452,7 +453,7 @@
                         <p>装饰线：</p>
                         <p>注意：装饰线需要占用元素的<code>:before</code>和/或<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
                         <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
-                        <div class="panel middle p-box">
+                        <div class="panel p-box">
                             <button class="btn-line">.line( 9 )</button>
                             <button class="btn-line-left">.line-left( 9 )</button>
                             <button class="btn-line-right">.line-right( 9 )</button>
@@ -467,7 +468,7 @@
                         <p>Flex装饰线会使用<code>display: flex</code>覆盖节点原本的显示方式，即便这样我们还是推荐使用Flex装饰线。与普通装饰线不同的是，<b>Flex装饰线不需要指定标题的文字数量，而是通过盒模型自适应装饰线宽度</b>，当然此样式需要目标浏览器对Flex盒模型的几乎完全的支持。</p>
                         <p>注意：装饰线需要占用元素的<code>:before</code>和<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
                         <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
-                        <div class="panel middle p-box">
+                        <div class="panel p-box">
                             <button class="btn-flex-line">.flex-line()</button>
                             <button class="btn-flex-line-left">.flex-line-left()</button>
                             <button class="btn-flex-line-right">.flex-line-right()</button>
@@ -477,6 +478,7 @@
                                 <h4 class="item">这里是一条文本标题</h4>
                             </div>
                         </div>
+                        <p>我们将一直完善复合样式及组件，将大量需要重复工作但极其通用的组件抽象出来组成方法集成在Brush中。</p>
                     </article>
                 </section>
                 <section id="flex">
@@ -513,6 +515,38 @@
                     <article>
                         <h3>简单动画</h3>
                         <p>自从CSS3支持缓动函数以来，动态效果的制作变得越来越快速，也越来越强大。Brush也在其基础上添加了一些简单的支持函数，用于使用者快速添加动画而避免无谓的细节。</p>
+                        <p>Animation and delay:</p>
+                        <p><code>ani()</code>方法使用的是Less中的<code>merge</code>特性，多个动画效果会在编译时集成而不用担心被覆盖，故而可以使用<code>.ani( width ); .ani( height ); .ani( opacity )</code>，在编译时会正确编译为<code>transition: width .3s ease-in-out, height .3s ease-in-out, opacity .3s ease-in-out;</code>。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel">
+                            <button class="btn-ani-width">.ani( width )</button>
+                            <button class="middle btn-ani-delay-width">.ani( width ).delay( 1s )</button>
+                            <button class="middle btn-ani-delay-width-2">.ani( width ).delay( 0s, .2s, 4 )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>Fade in/out:</p>
+                        <p>动画效果几乎都是单一且独立的，故而可以通过多次调用并赋予不同的参数来进行组合效果，例如本例中的动画3、4和5。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel fade-box">
+                            <button class="btn-fade-in">.fade-in( ltr )</button>
+                            <button class="btn-fade-out">.fade-out( ltr )</button>
+                            <button class="middle btn-fade-in-2">.fade-in( ltr ).fade-in( ttb )</button>
+                            <button class="middle btn-fade-out-2">.fade-out( ltr ).fade-out( ttb )</button>
+                            <button class="middle btn-fade-in-3">.fade-in( ltr ).fade-in( ttb ).delay( 0s, .2s, 4 )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
                     </article>
                 </section>
             </main>

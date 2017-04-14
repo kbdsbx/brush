@@ -334,6 +334,13 @@ section.contents {
                             height: 280px;
                         }
                     }
+
+                    &.fade-box {
+                        .item {
+                            .fade-out( ltr );
+                            .fade-out( ttb );
+                        }
+                    }
                 }
 
                 .make-btn-action-display ( @cl, @val ) {
@@ -392,6 +399,16 @@ section.contents {
                 .make-btn-action-display ( flex-line-left, { .flex-line-left() } );
                 .make-btn-action-display ( flex-line-right, { .flex-line-right() } );
                 .make-btn-action-display ( flex-line-2, { .flex-line( 16px, @hl ) } );
+
+                .make-btn-action-display ( ani-width, { .half; .ani( width ) } );
+                .make-btn-action-display ( ani-delay-width, { .half; .ani( width ); .delay( 1s ) } );
+                .make-btn-action-display ( ani-delay-width-2, { .half; .ani( width ); .delay( 0s, .2s, 4 ) } );
+
+                .make-btn-action-display ( fade-in, { .fade-in( ltr ) } );
+                .make-btn-action-display ( fade-out, { .fade-out( ltr ) } );
+                .make-btn-action-display ( fade-in-2, { .fade-in( ltr ); .fade-in( ttb ) } );
+                .make-btn-action-display ( fade-out-2, { .fade-out( ltr ); .fade-out( ttb ) } );
+                .make-btn-action-display ( fade-in-3, { .fade-in( ltr ); .fade-in( ttb ); .delay( 0s, .2s, 4 ) } );
 
 
                 .make-btn-action ( @cl, @val ) {
@@ -516,6 +533,10 @@ section.contents {
                     .mg-bt-quarter;
                     .ani( background-color );
                     width: 140px;
+
+                    &.middle {
+                        width: 280px;
+                    }
 
                     &.long {
                         width: 400px;
