@@ -478,6 +478,18 @@
                                 <h4 class="item">这里是一条文本标题</h4>
                             </div>
                         </div>
+                        
+                        <p>灯光阴影：</p>
+                        <p>注意：灯光阴影需要占用元素的<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle">
+                            <button class="btn-shadow">.shadow()</button>
+                            <button class="btn-shadow-2">.shadow( 3px, 8px, @hl )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
                         <p>我们将一直完善复合样式及组件，将大量需要重复工作但极其通用的组件抽象出来组成方法集成在Brush中。</p>
                     </article>
                 </section>
@@ -547,6 +559,33 @@
                                 <div class="item">内容</div>
                             </div>
                         </div>
+                        <p>涟漪：</p>
+                        <p>注意：涟漪需要占用元素的<code>:after</code>伪类，若需要在其他地方使用伪类，可以尝试嵌套一个新的结构进行装饰。</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle ripple-box">
+                            <button class="btn-ripple">.ripple()</button>
+                            <button class="btn-ripple-2">.ripple( @hl )</button>
+                            <button class="middle btn-ripple-3">.ripple( @hl, 100px, 1s )</button>
+                            <br>
+                            <button class="btn-ripple-4">.ripple-hold()</button>
+                            <button class="btn-ripple-5">.ripple-hold( @hl )</button>
+                            <button class="middle btn-ripple-6">.ripple-hold( @hl, 100px, 1s )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
+                        <p>由于本页面不使用js，会导致按钮取消<code>:focus</code>时直接清除伪类样式而不渐变，若想要产生较为好的渐变效果请在js中使用类似如下代码:</p>
+                        <pre class="long">
+$( 'button' ).blur(
+    var _this = this;
+    // fade in
+    _this.addClass( 'transparency' );
+    // remove ripple class after some time.
+    setTimeout( function() {
+        _this.removeClass( 'my-ripple' );
+    }, 300 );
+} );</pre>
                     </article>
                 </section>
             </main>

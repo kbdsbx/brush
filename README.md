@@ -271,6 +271,20 @@
  **/
 .flex-line-right ( @width; @color )
 
+/**
+ * 灯光阴影
+ *
+ * @height : 阴影宽度
+ *      @default : 5px
+ * @top : 阴影距本体距离
+ *      @default : 10px
+ * @color : 阴影颜色
+ *      @default : @hoary
+ **/
+.shadow ( @height; @top; @color )
+
+
+
 /**    动画    **/
 
 

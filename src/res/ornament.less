@@ -223,3 +223,33 @@
         flex-grow: 100;
     }
 }
+
+
+/**
+ * 灯光阴影
+ *
+ * @height : 阴影宽度
+ *      @default : 5px
+ * @top : 阴影距本体距离
+ *      @default : 10px
+ * @color : 阴影颜色
+ *      @default : @hoary
+ **/
+.shadow ( @height : 5px; @top : 10px; @color : @hoary ) {
+    ._shadow( @height; @top; @color );
+}
+
+._shadow ( @height; @position; @color ) {
+    .relative;
+    &:after {
+        .full;
+        .absolute;
+        .circle;
+        .left;
+        height: @height;
+        content: "";
+        bottom: -@position;
+        background-color: @color;
+        box-shadow: 0 0 3px fade( @color, 30% );
+    }
+}

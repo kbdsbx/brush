@@ -107,3 +107,59 @@
     .__to ( @dir, @len );
 }
 
+.ripple ( @color: @gray; @width : 100%; @duration : .5s ) {
+    ._ripple( @color; @width; @duration );
+}
+
+.ripple-hold ( @color: @gray; @width : 100%; @duration : .5s ) {
+    ._ripple( @color; @width; @duration; true );
+}
+
+._ripple ( @color; @width; @duration; @hold : false ) {
+    @keyframes ripple {
+        0% {
+            transform: scale( 0 );
+            .transparency;
+        }
+        20% {
+            transform: scale( 1 );
+            .opacity;
+        }
+        100% {
+            transform: scale( 1 );
+            .transparency;
+        }
+    }
+
+    @keyframes ripple-hold {
+        0% {
+            transform: scale( 0 );
+            .transparency;
+        }
+        100% {
+            transform: scale( 1 );
+            .opacity;
+        }
+    }
+ 
+    .of-hd;
+    .relative;
+    &:after {
+        .absolute;
+        .z-floor;
+        .circle;
+        width: @width;
+        height: @width;
+        left: ~"calc( ( 100% - @{width} ) / 2 )";
+        top: ~"calc( ( 100% - @{width} ) / 2 )";
+        content: "";
+        background-color: @color;
+        & when ( @hold = false ) {
+            animation: ripple @duration;
+        }
+        & when ( @hold = true ) {
+            animation: ripple-hold @duration forwards;
+        }
+    }
+}
+

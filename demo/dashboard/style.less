@@ -341,6 +341,17 @@ section.contents {
                             .fade-out( ttb );
                         }
                     }
+
+                    &.ripple-box {
+                        .item {
+                            &:after {
+                                .transparency;
+                                .ani( opacity );
+                                .ani( transform );
+                            }
+                            background-color: fade( @hl, 30% );
+                        }
+                    }
                 }
 
                 .make-btn-action-display ( @cl, @val ) {
@@ -410,6 +421,15 @@ section.contents {
                 .make-btn-action-display ( fade-out-2, { .fade-out( ltr ); .fade-out( ttb ) } );
                 .make-btn-action-display ( fade-in-3, { .fade-in( ltr ); .fade-in( ttb ); .delay( 0s, .2s, 4 ) } );
 
+                .make-btn-action-display ( shadow, { .shadow() } );
+                .make-btn-action-display ( shadow-2, { .shadow( 5px; 8px; @hl ) } );
+
+                .make-btn-action-display ( ripple, { .ripple() } );
+                .make-btn-action-display ( ripple-2, { .ripple( @hl ) } );
+                .make-btn-action-display ( ripple-3, { .ripple( @hl, 100px, 1s ) } );
+                .make-btn-action-display ( ripple-4, { .ripple-hold() } );
+                .make-btn-action-display ( ripple-5, { .ripple-hold( @hl ) } );
+                .make-btn-action-display ( ripple-6, { .ripple-hold( @hl, 100px, 1s ) } );
 
                 .make-btn-action ( @cl, @val ) {
                     button.btn-@{cl}:focus ~ .items {
