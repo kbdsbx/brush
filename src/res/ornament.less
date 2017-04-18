@@ -228,28 +228,110 @@
 /**
  * 灯光阴影
  *
- * @height : 阴影宽度
+ * @width: 阴影宽度
+ *      @default : 100%
+ * @height : 阴影高度
  *      @default : 5px
  * @top : 阴影距本体距离
  *      @default : 10px
  * @color : 阴影颜色
  *      @default : @hoary
  **/
-.shadow ( @height : 5px; @top : 10px; @color : @hoary ) {
-    ._shadow( @height; @top; @color );
+.shadow ( @width : 100%; @height : 5px; @top : 10px; @color : @hoary ) {
+    ._shadow( @width; @height; @top; @color );
 }
 
-._shadow ( @height; @position; @color ) {
+._shadow ( @width; @height; @position; @color ) {
     .relative;
     &:after {
-        .full;
         .absolute;
         .circle;
-        .left;
-        height: @height;
         content: "";
+        width: @width;
+        height: @height;
+        left: ~"calc( ( 100% - @{width} ) / 2 )";
         bottom: -@position;
         background-color: @color;
         box-shadow: 0 0 3px fade( @color, 30% );
+    }
+}
+
+/**
+ * 已选装饰
+ *
+ * @position: 装饰位置
+ *      tr : top right
+ *      tl : top left
+ *      br : bottom right
+ *      bl : bottom left
+ *      @default : tr
+ * @size: 装饰宽度
+ *      @default : 30px
+ * @bg-color: 装饰颜色
+ *      @default : @hl
+ * @color: 装饰文字颜色
+ *      @default : @white
+ * @content: 装饰内容（推荐使用单一文字或字符）
+ *      @default : "\2714"
+ **/
+.choose-badge ( @position : tr; @size : 30px; @bg-color : @hl; @color : @white; @content : "\2714" ) {
+    ._choose-badge( @position; @size; @bg-color; @color; @content );
+}
+
+._choose-badge ( @pos; @size; @bg-color; @color; @content ) {
+    .relative;
+
+    &:before {
+        content: "";
+        border : ( @size / 2 ) solid @trans;
+
+        .absolute;
+        & when ( @pos = tr ) {
+            .top;
+            .right;
+            border-top-color: @bg-color;
+            border-right-color: @bg-color;
+        }
+        & when ( @pos = tl ) {
+            .top;
+            .left;
+            border-top-color: @bg-color;
+            border-left-color: @bg-color;
+        }
+        & when ( @pos = br ) {
+            .bottom;
+            .right;
+            border-bottom-color: @bg-color;
+            border-right-color: @bg-color;
+        }
+        & when ( @pos = bl ) {
+            .bottom;
+            .left;
+            border-bottom-color: @bg-color;
+            border-left-color: @bg-color;
+        }
+    }
+    &:after {
+        .absolute;
+        line-height: 1.0em;
+        color: @color;
+        font-size: @size / 2.5;
+        & when ( @pos = tr ) {
+            top : @size / 10;
+            right : @size / 10;
+        }
+        & when ( @pos = tl ) {
+            top : @size / 10;
+            left: @size / 10;
+        }
+        & when ( @pos = br ) {
+            bottom : @size / 10;
+            right : @size / 10;
+        }
+        & when ( @pos = bl ) {
+            bottom : @size / 10;
+            left : @size / 10;
+        }
+        content: @content;
     }
 }

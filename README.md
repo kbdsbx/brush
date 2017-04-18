@@ -274,14 +274,38 @@
 /**
  * 灯光阴影
  *
- * @height : 阴影宽度
+ * @width: 阴影宽度
+ *      @default : 100%
+ * @height : 阴影高度
  *      @default : 5px
  * @top : 阴影距本体距离
  *      @default : 10px
  * @color : 阴影颜色
  *      @default : @hoary
  **/
-.shadow ( @height; @top; @color )
+.shadow ( @width; @height; @top; @color )
+
+
+/**
+ * 已选装饰
+ *
+ * @position: 装饰位置
+ *      tr : top right
+ *      tl : top left
+ *      br : bottom right
+ *      bl : bottom left
+ *      @default : tr
+ * @size: 装饰宽度
+ *      @default : 30px
+ * @bg-color: 装饰颜色
+ *      @default : @hl
+ * @color: 装饰文字颜色
+ *      @default : @white
+ * @content: 装饰内容（推荐使用单一文字或字符）
+ *      @default : "\2714"
+ **/
+.choose-badge ( @position; @size; @bg-color; @color; @content ) 
+
 
 
 

@@ -342,6 +342,14 @@ section.contents {
                         }
                     }
 
+                    &.choose-box {
+                        .item {
+                            .hl-half-bg;
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+
                     &.ripple-box {
                         .item {
                             &:after {
@@ -422,7 +430,9 @@ section.contents {
                 .make-btn-action-display ( fade-in-3, { .fade-in( ltr ); .fade-in( ttb ); .delay( 0s, .2s, 4 ) } );
 
                 .make-btn-action-display ( shadow, { .shadow() } );
-                .make-btn-action-display ( shadow-2, { .shadow( 5px; 8px; @hl ) } );
+                .make-btn-action-display ( shadow-2, { .shadow( 100%; 5px; 8px; @hl ) } );
+                .make-btn-action-display ( shadow-3, { .shadow( 50%; 5px; 8px; @hl ) } );
+                .make-btn-action-display ( shadow-4, { .shadow( 150%; 5px; 8px; @hl ) } );
 
                 .make-btn-action-display ( ripple, { .ripple() } );
                 .make-btn-action-display ( ripple-2, { .ripple( @hl ) } );
@@ -430,6 +440,15 @@ section.contents {
                 .make-btn-action-display ( ripple-4, { .ripple-hold() } );
                 .make-btn-action-display ( ripple-5, { .ripple-hold( @hl ) } );
                 .make-btn-action-display ( ripple-6, { .ripple-hold( @hl, 100px, 1s ) } );
+
+                .make-btn-action-display ( choose-badge, { .choose-badge() } );
+                .make-btn-action-display ( choose-badge-2, { .choose-badge( tl ) } );
+                .make-btn-action-display ( choose-badge-3, { .choose-badge( br ) } );
+                .make-btn-action-display ( choose-badge-4, { .choose-badge( bl ) } );
+                .make-btn-action-display ( choose-badge-5, { .choose-badge( tr, 40px, @white, @red ) } );
+                .make-btn-action-display ( choose-badge-6, { .choose-badge( tr, 40px, @white, @red, "\266B" ) } );
+                .make-btn-action-display ( choose-badge-7, { .bd; .hl-bd; .choose-badge; } );
+                .make-btn-action-display ( choose-badge-8, { .choose-badge( tr, 40px, @trans, @red, "\266B" ) } );
 
                 .make-btn-action ( @cl, @val ) {
                     button.btn-@{cl}:focus ~ .items {
