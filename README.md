@@ -98,11 +98,6 @@
 // cursor
 .pointer
 
-/**    复合样式    **/
-
-
-// ornament
-.arrow, .arrow-full
 ```
 
 ### 可用的方法
@@ -306,6 +301,19 @@
  **/
 .choose-badge ( @position; @size; @bg-color; @color; @content ) 
 
+/**
+ * 文字阴影（3D）
+ *
+ * @deeps : 阴影深度
+ *      @default : 5px;
+ * @deg : 阴影角度，可用任何表示角度或弧度的数值类型
+ *      @default : 45deg;
+ * @color-form : 阴影起始颜色，靠近文字
+ *      @default : @hl;
+ * @color-to : 阴影结束颜色，远离文字
+ *      @default : @hl;
+ **/
+.text-shadow ( @deeps; @deg; @color-form; @color-to; )
 
 
 

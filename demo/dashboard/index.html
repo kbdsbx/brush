@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scaleable=0">
         <title>Dashboard</title>
 
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet/less" type="text/css" href="style.less">
-        <script src="http://cdn.bootcss.com/less.js/2.5.3/less.min.js"></script>
+        <script src="http://cdn.bootcss.com/less.js/2.7.2/less.js"></script>
         <script src="../../lib/jquery.min.js"></script>
     </head>
     <body>
@@ -61,6 +62,9 @@
                                 </li>
                                 <li>
                                     <a href="#animation" name="main">简单动画</a>
+                                </li>
+                                <li>
+                                    <a href="#algorithm" name="main">算法</a>
                                 </li>
                             </ul>
                         </li>
@@ -511,6 +515,19 @@
                                 <div class="item">内容</div>
                             </div>
                         </div>
+
+                        <p>文字阴影（3D文字）：</p>
+                        <p><i>通过点击按钮熟悉不同样式的区别：</i></p>
+                        <div class="panel middle text-shadow-box">
+                            <button class="btn-text-shadow">.text-shadow()</button>
+                            <button class="long btn-text-shadow-2">.text-shadow( 15px, 45grad, @hl, fade( @hl, 50% ) )</button>
+                            <button class="middle btn-text-shadow-3">.text-shadow( 15px, 90deg, @red, @green )</button>
+                            <button class="long btn-text-shadow-4">.text-shadow( 15px, 135deg, @gray, @trans )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item">内容</div>
+                            </div>
+                        </div>
                         <p>我们将一直完善复合样式及组件，将大量需要重复工作但极其通用的组件抽象出来组成方法集成在Brush中。</p>
                     </article>
                 </section>
@@ -607,6 +624,127 @@ $( 'button' ).blur(
         _this.removeClass( 'my-ripple' );
     }, 300 );
 } );</pre>
+                    </article>
+                </section>
+                <section id="algorithm">
+                    <article>
+                        <h3>算法</h3>
+                        <p>尝试使用less进行算法添加</p>
+                        <h5>Cubic Bezier （三次方贝塞尔曲线）</h5>
+                        <p>在使用三次方贝塞尔曲线时，需要在调用方法的时候添加关键帧，例如<code>.cubic-bezier( x1, y1, x2, y2, <b>50</b> )</code>或者<code>.linear( <b>50</b> )</code>，关键帧范围为[1, 100]，而其调用结果主要使用函数调用后的less返回值<code>@vx</code>和<code>@vy</code>。其中，<code><b>@vy</b></code>值是用于加入插值，或渐变的主要值。</p>
+                        <div class="panel long bezier-box">
+                            <button class="long btn-bezier">.cubic-bezier( 0, 0.5, 0.5, 1 )</button>
+                            <button class="long btn-bezier-2">.cubic-bezier( 0.6, 0, 0.4, 1 )</button>
+                            <button class="long btn-bezier-3">.cubic-bezier( 0, 0, 1, 1 ) / .linear()</button>
+                            <button class="long btn-bezier-4">.cubic-bezier( .25, .1, .25, 1 ) / .ease()</button>
+                            <button class="long btn-bezier-5">.cubic-bezier( .42, 0, 1, 1 ) / .ease-in()</button>
+                            <button class="long btn-bezier-6">.cubic-bezier( 0, 0, .58, 1 ) / .ease-out()</button>
+                            <button class="long btn-bezier-7">.cubic-bezier( .42, 0, .58, 1 ) / .ease-in-out()</button>
+                            <button class="long btn-bezier-8">.cubic-bezier( 0.68, -0.55, 0.27, 1.55 )</button>
+                            <br>
+                            <div class="items">
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                                <div class="item"></div>
+                            </div>
+                        </div>
                     </article>
                 </section>
                 <section id="principia">

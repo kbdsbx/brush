@@ -1,22 +1,17 @@
 @import "variable.less";
 @import "main.less";
 
-.arrow {
-    ._arrow( 8px, @hoary, @white, top, 1px );
-}
-.arrow-full {
-    ._arrow( 8px, @white, @white, top, 0px );
-}
-
 /**
  * 带边框的装饰角
  *
  * @width : 装饰角宽度
+ *      @default    8px
  * @position : 装饰角位置
  *      left
  *      right
  *      top
  *      bottom
+ *      @default    top
  * @border-color : 装饰角边框颜色
  *      @default    @gray
  * @background-color : 装饰角背景颜色
@@ -24,7 +19,7 @@
  * @border-width : 装饰角边框宽度
  *      @default    1px
  **/
-.arrow ( @width; @position; @border-color: @gray; @background-color: @white; @border-width : 1px ) {
+.arrow ( @width : 8px; @position : top; @border-color: @gray; @background-color: @white; @border-width : 1px ) {
     ._arrow( @width / 2; @border-color; @background-color; @position; @border-width );
 }
 
@@ -32,15 +27,17 @@
  * 无边框的装饰角
  *
  * @width : 装饰角宽度
+ *      @default    8px
  * @position : 装饰角位置
  *      left
  *      right
  *      top
  *      bottom
+ *      @default    top
  * @background-color : 装饰角背景颜色
  *      @default    @white
  **/
-.arrow-full ( @width; @position; @background-color: @white ) {
+.arrow-full ( @width : 8px; @position : top; @background-color: @white ) {
     ._arrow( @width / 2; @white; @background-color; @position; 0px );
 }
 
@@ -255,6 +252,39 @@
         box-shadow: 0 0 3px fade( @color, 30% );
     }
 }
+
+/**
+ * 文字阴影（3D）
+ *
+ * @deeps : 阴影深度
+ *      @default : 5px;
+ * @deg : 阴影角度，可用任何表示角度或弧度的数值类型
+ *      @default : 45deg;
+ * @color-form : 阴影起始颜色，靠近文字
+ *      @default : @hl;
+ * @color-to : 阴影结束颜色，远离文字
+ *      @default : @hl;
+ **/
+.text-shadow ( @deeps : 5px; @deg : 45deg; @color-form : @hl; @color-to : @hl; ) {
+    ._text-shadow ( @deeps; @deg; @color-form; @color-to; );
+}
+
+._text-shadow ( @deeps; @deg; @form; @to; ) {
+    @full-deeps : unit( @deeps );
+    ._text-shadow ( @full-deeps; @deg; @form; @to; @full-deeps );
+}
+
+._text-shadow ( @deeps; @deg; @form; @to; @full-deeps ) when ( @deeps > 0 ) {
+    @cur : @full-deeps - @deeps;
+    @cur_per : percentage( @cur / @full-deeps );
+    @cur_col : mix( @form, @to, @cur_per );
+    @h : unit( sin( @deg ) * @deeps, px );
+    @v : unit( cos( @deg ) * @deeps, px );
+    text-shadow+ : @h @v 1px @cur_col;
+
+    ._text-shadow( @deeps - 1; @deg; @form; @to; @full-deeps );
+}
+
 
 /**
  * 已选装饰

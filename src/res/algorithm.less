@@ -1,0 +1,50 @@
+
+.__cubic-bezier ( @p1x, @p1y, @p2x, @p2y, @t ) {
+    @p0x : 0;
+    @p0y : 0;
+    @p3x : 1;
+    @p3y : 1;
+
+    // first group
+    @q0x : ( @p1x - @p0x ) * ( @t / 100 ) + @p0x;
+    @q0y : ( @p1y - @p0y ) * ( @t / 100 ) + @p0y;
+    
+    @q1x : ( @p2x - @p1x ) * ( @t / 100 ) + @p1x;
+    @q1y : ( @p2y - @p1y ) * ( @t / 100 ) + @p1y;
+
+    @q2x : ( @p3x - @p2x ) * ( @t / 100 ) + @p2x;
+    @q2y : ( @p3y - @p2y ) * ( @t / 100 ) + @p2y;
+
+
+    // second group
+    @r0x : ( @q1x - @q0x ) * ( @t / 100 ) + @q0x;
+    @r0y : ( @q1y - @q0y ) * ( @t / 100 ) + @q0y;
+
+    @r1x : ( @q2x - @q1x ) * ( @t / 100 ) + @q1x;
+    @r1y : ( @q2y - @q1y ) * ( @t / 100 ) + @q1y;
+
+    // final
+    @vx : ( @r1x - @r0x ) * ( @t / 100 ) + @r0x;
+    @vy : ( @r1y - @r0y ) * ( @t / 100 ) + @r0y;
+}
+
+.cubic-bezier( @p1x, @p1y, @p2x, @p2y, @t ) {
+    .__cubic-bezier ( @p1x, @p1y, @p2x, @p2y, @t );
+}
+
+.linear ( @t ) {
+    .__cubic-bezier( 0, 0, 1, 1, @t );
+}
+.ease ( @t ) {
+    .__cubic-bezier( .25, .1, .25, 1, @t );
+}
+.ease-in ( @t ) {
+    .__cubic-bezier( .42, 0, 1, 1, @t );
+}
+.ease-out ( @t ) {
+    .__cubic-bezier( 0, 0, .58, 1, @t );
+}
+.ease-in-out ( @t ) {
+    .__cubic-bezier( .42, 0, .58, 1, @t );
+}
+

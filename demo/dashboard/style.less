@@ -350,6 +350,13 @@ section.contents {
                         }
                     }
 
+                    &.text-shadow-box {
+                        .item {
+                            .hoary-bg;
+                            .font-20;
+                        }
+                    }
+
                     &.ripple-box {
                         .item {
                             &:after {
@@ -358,6 +365,20 @@ section.contents {
                                 .ani( transform );
                             }
                             background-color: fade( @hl, 30% );
+                        }
+                    }
+
+                    &.bezier-box {
+                        .items {
+                            .relative;
+                            .item {
+                                .absolute;
+                                .left;
+                                .top;
+                                .transparency;
+                                width: 10px;
+                                height: 10px;
+                            }
                         }
                     }
                 }
@@ -449,6 +470,33 @@ section.contents {
                 .make-btn-action-display ( choose-badge-6, { .choose-badge( tr, 40px, @white, @red, "\266B" ) } );
                 .make-btn-action-display ( choose-badge-7, { .bd; .hl-bd; .choose-badge; } );
                 .make-btn-action-display ( choose-badge-8, { .choose-badge( tr, 40px, @trans, @red, "\266B" ) } );
+
+                .make-btn-action-display ( text-shadow, { .text-shadow() } );
+                .make-btn-action-display ( text-shadow-2, { .text-shadow( 15px; 45grad; @hl; fade( @hl, 50% ) ) } );
+                .make-btn-action-display ( text-shadow-3, { .text-shadow( 15px; 90deg; @red; @green ) } );
+                .make-btn-action-display ( text-shadow-4, { .text-shadow( 15px; 135deg; @gray; @trans ) } );
+
+
+                .add-all-of-child-position ( @a, @b, @c, @d, @idx ) when ( @idx <= 100 ) {
+                    &:nth-child( @{idx} ) {
+                        .cubic-bezier( @a, @b, @c, @d, @idx ); 
+                        .opacity;
+                        left : unit( @vx, px ) * 200;
+                        top : unit( @vy, px ) * 200;
+                    }
+                    .add-all-of-child-position ( @a, @b, @c, @d, @idx + 1 );
+                }
+                .make-btn-action-display ( bezier, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( 0, 0.5, 0.5, 1, 1 ) } );
+                .make-btn-action-display ( bezier-2, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( 0.6, 0, 0.4, 1, 1 ) } );
+                .make-btn-action-display ( bezier-3, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( 0, 0, 1, 1, 1 ) } );
+                .make-btn-action-display ( bezier-4, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( .25, .1, .25, 1, 1 ) } );
+                .make-btn-action-display ( bezier-5, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( .42, 0, 1, 1, 1 ) } );
+                .make-btn-action-display ( bezier-6, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( 0, 0, .58, 1, 1 ) } );
+                .make-btn-action-display ( bezier-7, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( .42, 0, .58, 1, 1 ) } );
+                .make-btn-action-display ( bezier-8, { .delay( 0, 8ms, 100 ); .add-all-of-child-position( 0.68, -0.55, 0.27, 1.55, 1 ) } );
+
+
+
 
                 .make-btn-action ( @cl, @val ) {
                     button.btn-@{cl}:focus ~ .items {
@@ -596,3 +644,4 @@ footer {
     .pd;
     .font-12;
 }
+
