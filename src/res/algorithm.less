@@ -28,23 +28,59 @@
     @vy : ( @r1y - @r0y ) * ( @t / 100 ) + @r0y;
 }
 
+/**
+ * 三次方贝塞尔曲线
+ *
+ * @p1x : 控制点p1x
+ * @p1y : 控制点p1y
+ * @p2x : 控制点p2x
+ * @p2y : 控制点p2y
+ * @t : 函数变量
+ **/
 .cubic-bezier( @p1x, @p1y, @p2x, @p2y, @t ) {
     .__cubic-bezier ( @p1x, @p1y, @p2x, @p2y, @t );
 }
 
+/**
+ * linear
+ *
+ * @t : 函数变量
+ **/
 .linear ( @t ) {
     .__cubic-bezier( 0, 0, 1, 1, @t );
 }
+/**
+ * ease
+ *
+ * @t : 函数变量
+ **/
 .ease ( @t ) {
     .__cubic-bezier( .25, .1, .25, 1, @t );
 }
+/**
+ * ease-in
+ *
+ * @t : 函数变量
+ **/
 .ease-in ( @t ) {
     .__cubic-bezier( .42, 0, 1, 1, @t );
 }
+/**
+ * ease-out
+ *
+ * @t : 函数变量
+ **/
 .ease-out ( @t ) {
     .__cubic-bezier( 0, 0, .58, 1, @t );
 }
+/**
+ * ease-in-out
+ *
+ * @t : 函数变量
+ **/
 .ease-in-out ( @t ) {
     .__cubic-bezier( .42, 0, .58, 1, @t );
 }
+
+// catmull rom spline
 

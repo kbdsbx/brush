@@ -1,0 +1,43 @@
+{
+  "name": "less-brush",
+  "version": "0.1.0",
+  "description": "simple less library.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbdsbx/brush.git"
+  },
+  "keywords": [
+    "brush",
+    "less",
+    "less",
+    "library",
+    "css",
+    "style",
+    "styles",
+    "stylesheet",
+    "css3",
+    "framework",
+    "frontend",
+    "frontend",
+    "framework",
+    "css",
+    "framework",
+    "less",
+    "framework",
+    "style",
+    "framework"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbdsbx/brush/issues"
+  },
+  "homepage": "http://git.zhaoyi.me"
+}

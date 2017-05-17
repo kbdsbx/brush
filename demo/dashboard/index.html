@@ -631,7 +631,7 @@ $( 'button' ).blur(
                         <h3>算法</h3>
                         <p>尝试使用less进行算法添加</p>
                         <h5>Cubic Bezier （三次方贝塞尔曲线）</h5>
-                        <p>在使用三次方贝塞尔曲线时，需要在调用方法的时候添加关键帧，例如<code>.cubic-bezier( x1, y1, x2, y2, <b>50</b> )</code>或者<code>.linear( <b>50</b> )</code>，关键帧范围为[1, 100]，而其调用结果主要使用函数调用后的less返回值<code>@vx</code>和<code>@vy</code>。其中，<code><b>@vy</b></code>值是用于加入插值，或渐变的主要值。</p>
+                        <p>在使用三次方贝塞尔曲线时，需要在调用方法的时候添加关键帧，例如<code>.cubic-bezier( x1, y1, x2, y2, <b>50</b> )</code>或者<code>.linear( <b>50</b> )</code>，关键帧范围为[1, 100]，而其调用结果主要使用函数调用后的less返回值<code>@vx</code>和<code>@vy</code>。其中，<b><code>@vy</code>值是用于加入插值，渐变的主要值</b>。</p>
                         <div class="panel long bezier-box">
                             <button class="long btn-bezier">.cubic-bezier( 0, 0.5, 0.5, 1 )</button>
                             <button class="long btn-bezier-2">.cubic-bezier( 0.6, 0, 0.4, 1 )</button>

@@ -1,3 +1,9 @@
+[![GitHub version](https://badge.fury.io/gh/kbdsbx%2Fbrush.svg)](https://badge.fury.io/gh/kbdsbx%2Fbrush)  [![npm version](https://badge.fury.io/js/less-brush.svg)](https://badge.fury.io/js/less-brush)  [![NuGet version](https://badge.fury.io/nu/kbdsbx%2Fbrush.svg)](https://badge.fury.io/nu/kbdsbx%2Fbrush)
+
+#[Brush](http://git.zhaoyi.me)
+
+一个Less样式库，封装组合原始css
+
 ### 可用class
 ```css
 
@@ -375,3 +381,6 @@
 
 
 ```
+
+#License
+[ISC](http://spdx.org/licenses/ISC)
