@@ -330,12 +330,15 @@
         }
     }, @min );
 
+    // font normal
+    .media-select( ~"@{cl}normal", {
+        font-weight: normal;
+        font-style: normal;
+    }, @min );
+
     // font weight
     .media-select( ~"@{cl}lighter", {
         font-weight: lighter;
-    }, @min );
-    .media-select( ~"@{cl}normal", {
-        font-weight: normal;
     }, @min );
     .media-select( ~"@{cl}bold", {
         font-weight: bold;
@@ -350,6 +353,11 @@
     }
 
     .stu_font( 50 );
+
+    // font style
+    .media-select( ~"@{cl}italic", {
+        font-style: italic;
+    }, @min );
 
 
     // opacity
