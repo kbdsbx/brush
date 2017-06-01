@@ -48,7 +48,7 @@
 .border-[directions]-[multiples], .bd-[dir]-[multiples]
 
 // outline:
-.outline-[directions]-[multiples], .ot-[dir]-[multiples]
+.outline-[multiples], .ot-[multiples]
 
 // border style:
 .solid, .dotted, .dashed, .double
@@ -84,7 +84,13 @@
 .udl, .orl, .thl, .nl
 
 // font weight
-.lighter, .normal, .bold
+.lighter, .bold
+
+// font style
+.italic
+
+// font reset
+.normal
 
 // font size
 .font-[size]
