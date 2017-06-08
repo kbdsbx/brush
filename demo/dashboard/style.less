@@ -381,6 +381,19 @@ section.contents {
                             }
                         }
                     }
+
+                    &.scroll-bar-box {
+                        .items {
+                            .of-sl;
+                            width: 100%;
+                            height: 200px;
+                            .item {
+                                .hl-half-bg;
+                                width: 9999px;
+                                height: 6666px;
+                            }
+                        }
+                    }
                 }
 
                 .make-btn-action-display ( @cl, @val ) {
@@ -612,6 +625,12 @@ section.contents {
                 .make-btn-action ( font-46, { .font-46 } );
                 .make-btn-action ( font-48, { .font-48 } );
                 .make-btn-action ( font-50, { .font-50 } );
+
+                .make-btn-action ( scroll, { .scrollbar() } );
+                .make-btn-action ( scroll-2, { .scrollbar( 0 ) } );
+                .make-btn-action ( scroll-3, { .scrollbar( 10px ) } );
+                .make-btn-action ( scroll-4, { .scrollbar( 5px, @red, @gray ) } );
+                .make-btn-action ( scroll-5, { .scrollbar( 5px, @hl, @white, 2.5px ) } );
 
                 button {
                     .pointer;

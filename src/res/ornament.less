@@ -365,3 +365,33 @@
         content: @content;
     }
 }
+
+/**
+ * 滚动条
+ *
+ * @width: 滚动条宽度
+ *      @default : 5px
+ * @color: 滚动条滚动块颜色
+ *      @default : @hl
+ * @bg-color: 滚动条轨道区颜色
+ *      @default : @white
+ * @radius: 滚动条滚动块圆弧
+ *      @default : 0
+ **/
+.scrollbar( @width : 5px; @color : @hl; @bg-color : @white; @radius : 0 ) {
+    ._scrollbar( @width, @color, @bg-color, @radius );
+}
+
+._scrollbar ( @width, @color, @bg-color, @radius ) {
+    &::-webkit-scrollbar {
+        width: @width;
+        height: @width;
+    }
+    &::-webkit-scrollbar-track {
+        background-color : @bg-color;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: @color;
+        border-radius: @radius;
+    }
+}

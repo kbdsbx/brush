@@ -3,11 +3,13 @@
 # [Brush](http://git.zhaoyi.me)
 
 一个Less样式库，封装组合原始css
+A library for styles which boxed original css by less.
 
-### 可用class
+### 可用class / Can used the classes.
 ```css
 
 /**    简单样式    **/
+/**    simply styles    **/
 
 
 // colors:
@@ -20,6 +22,11 @@
 .trans, .trans-bg, .trans-bd
 .red, .red-bg, .red-bd
 .green, .green-bg, .green-bd
+
+```
+[![Colors](https://github.com/kbdsbx/brush/blob/master/data/2017-06-08_093809.png)]
+
+```css
 
 // display:
 .none, .block, .inline, .inline-block, .table, .flex, .display-unset
@@ -112,67 +119,78 @@
 
 ```
 
-### 可用的方法
+### 可用的方法 / Can used the functions
 ```css
 /**    媒体查询    **/
+/**    media selection    **/
 
 
 /**
  * 最小宽度在320px的所有设备上生效
+ * effect on devices which width minimum then 320px.
  **/
 .mxs( {
     ...
 } );
 /**
  * 最小宽度在375px的所有设备上生效
+ * effect on devices which width minimum then 375px.
  **/
 .ms( {
     ...
 } );
 /**
  * 最小宽度在414px的所有设备上生效
+ * effect on devices which width minimum then 414px.
  **/
 .mm( {
     ...
 } );
 /**
  * 最小宽度在768px的所有设备上生效
+ * effect on devices which width minimum then 768px.
  **/
 .ml( {
     ...
 } );
 /**
  * 最小宽度在1024px的所有设备上生效
+ * effect on devices which width minimum then 1024px.
  **/
 .mxl( {
     ...
 } );
 /**
  * 最小宽度在1280px的所有设备上生效
+ * effect on devices which width minimum then 1280px.
  **/
 .xs( {
     ...
 } );
 /**
  * 最小宽度在1366px的所有设备上生效
+ * effect on devices which width minimum then 1366px.
  **/
 .s( {
     ...
 } );
 /**
  * 最小宽度在1440px的所有设备上生效
+ * effect on devices which width minimum then 1440px.
  **/
 .m( {
     ...
 } );
 /**
  * 最小宽度在1600px的所有设备上生效
+ * effect on devices which width minimum then 1600px.
  **/
 .l( {
     ...
 } );
 /**
  * 最小宽度在1920px的所有设备上生效
+ * effect on devices which width minimum then 1920px.
  **/
 .xl( {
     ...
@@ -180,10 +198,12 @@
 
 
 /**    装饰    **/
+/**    ornament    **/
 
 
 /**
  * 带边框的装饰角
+ * arrow with border.
  *
  * @width : 装饰角宽度
  * @position : 装饰角位置
@@ -202,6 +222,7 @@
 
 /**
  * 无边框的装饰角
+ * arrwo without border.
  *
  * @width : 装饰角宽度
  * @position : 装饰角位置
@@ -216,6 +237,7 @@
 
 /**
  * 装饰线
+ * line between contents.
  *
  * @text-length : 内容文本字数
  * @width : 装饰线宽度
@@ -227,6 +249,7 @@
 
 /**
  * 左装饰线
+ * left line.
  *
  * @text-length : 内容文本字数
  * @width : 装饰线宽度
@@ -238,6 +261,7 @@
 
 /**
  * 右装饰线
+ * right line.
  *
  * @text-length : 内容文本字数
  * @width : 装饰线宽度
@@ -249,6 +273,7 @@
 
 /**
  * Flex装饰线
+ * line between contents use as flex.
  *
  * @width : 装饰线宽度
  *      @default : 1px
@@ -259,6 +284,7 @@
 
 /**
  * Flex左装饰线
+ * left line use as flex.
  *
  * @width : 装饰线宽度
  *      @default : 1px
@@ -270,6 +296,7 @@
 
 /**
  * Flex右装饰线
+ * right line use as flex.
  *
  * @width : 装饰线宽度
  *      @default : 1px
@@ -280,6 +307,7 @@
 
 /**
  * 灯光阴影
+ * light shadow.
  *
  * @width: 阴影宽度
  *      @default : 100%
@@ -295,6 +323,7 @@
 
 /**
  * 已选装饰
+ * border and badge for selections.
  *
  * @position: 装饰位置
  *      tr : top right
@@ -315,6 +344,7 @@
 
 /**
  * 文字阴影（3D）
+ * fonts shadow (3D)
  *
  * @deeps : 阴影深度
  *      @default : 5px;
@@ -327,13 +357,30 @@
  **/
 .text-shadow ( @deeps; @deg; @color-form; @color-to; )
 
+/**
+ * 滚动条
+ * scrollbar.
+ *
+ * @width: 滚动条宽度
+ *      @default : 5px
+ * @color: 滚动条滚动块颜色
+ *      @default : @hl
+ * @bg-color: 滚动条轨道区颜色
+ *      @default : @white
+ * @radius: 滚动条滚动块圆弧
+ *      @default : 0
+ **/
+.scrollbar( @width; @color; @bg-color; @radius; ) {
+
 
 
 /**    动画    **/
+/**    animation    **/
 
 
 /**
  * 简单动画
+ * simply animation.
  *
  * @class : 需要添加动画的css属性
  * @duration : 动画持续时长
@@ -343,6 +390,7 @@
 
 /**
  * 动画延迟
+ * animation delayer.
  *
  * @delay : 延迟时长
  **/
@@ -350,6 +398,7 @@
 
 /**
  * 将一组节点间隔相同时长进行延长
+ * the animation that delay with each item in a group spaced same time.
  *
  * @base : 基础延长时长
  * @steps : 每个节点比上一个节点增加的延长时间
@@ -359,6 +408,7 @@
 
 /**
  * 节点缓动显示
+ * fade out.
  *
  * @direction : 方向
  *      ltr : 从左往右
@@ -372,6 +422,7 @@
 
 /**
  * 节点缓动隐藏
+ * fade in.
  *
  * @direction : 方向
  *      ltr : 从左往右
