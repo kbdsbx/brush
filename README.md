@@ -24,7 +24,7 @@ A library for styles which boxed original css by less.
 .green, .green-bg, .green-bd
 
 ```
-![Colors](https://github.com/kbdsbx/brush/blob/master/data/2017-06-08_093809.png)
+![Colors](https://github.com/kbdsbx/brush/raw/master/data/2017-06-08_093809.png)
 
 ```css
 
