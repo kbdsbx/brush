@@ -1,6 +1,6 @@
 [![GitHub version](https://badge.fury.io/gh/kbdsbx%2Fbrush.svg)](https://badge.fury.io/gh/kbdsbx%2Fbrush)  [![npm version](https://badge.fury.io/js/less-brush.svg)](https://badge.fury.io/js/less-brush)  [![NuGet version](https://badge.fury.io/nu/kbdsbx%2Fbrush.svg)](https://badge.fury.io/nu/kbdsbx%2Fbrush)
 
-# [Brush](http://git.zhaoyi.me)
+# [Brush](http://brush.zhaoyi.me)
 
 一个Less样式库，封装组合原始css
 A library for styles which boxed original css by less.
@@ -24,7 +24,7 @@ A library for styles which boxed original css by less.
 .green, .green-bg, .green-bd
 
 ```
-![Colors](https://github.com/kbdsbx/brush/raw/master/data/2017-06-08_093809.png)
+![Colors](https://github.com/kbdsbx/brush/raw/master/img/2017-09-11_113332.png)
 
 ```css
 
@@ -436,7 +436,17 @@ A library for styles which boxed original css by less.
  **/
 .fade-in ( @direction; @duration; @length )
 
-
+/**
+ * 涟漪
+ *
+ * @color : 颜色
+ *      @defalut : @gray
+ * @width : 涟漪宽度
+ *      @defalut : 100%
+ * @duration : 持续时间
+ *      @defalut : .5s
+ **/
+.ripple ( @color; @width; @duration )
 ```
 
 # License

@@ -88,7 +88,7 @@
  * @duration : 持续时间
  *      @default : 200ms
  * @length : 缓动距离
- *      @default : 10px;
+ *      @default : 10px
  **/
 .fade-in ( @direction; @duration : .2s; @length : 10px ) {
     ._fade-in( @direction; @duration; @length );
@@ -107,6 +107,16 @@
     .__to ( @dir, @len );
 }
 
+/**
+ * 涟漪
+ *
+ * @color : 颜色
+ *      @defalut : @gray
+ * @width : 涟漪宽度
+ *      @defalut : 100%
+ * @duration : 持续时间
+ *      @defalut : .5s
+ **/
 .ripple ( @color: @gray; @width : 100%; @duration : .5s ) {
     ._ripple( @color; @width; @duration );
 }
