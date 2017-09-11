@@ -2,3 +2,6 @@
 .*.swp
 .*.swo
 .git
+.svn
+demo
+test
