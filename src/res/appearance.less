@@ -1,0 +1,68 @@
+@import (reference) 'main.less';
+
+.radio ( @size : 14px; @color : @hl; @radius : 50%; @content-size: 1 ) {
+    ._radio( @size; @color; @radius; @content-size; );
+}
+
+.checkbox ( @size : 14px; @color: @hl; @radius : 0%; @content-size: 1;  @content : "✔" ) {
+    ._radio( @size, @color, @radius, @content-size, @content );
+}
+
+._radio ( @size, @color, @radius,  @content-size : 1, @content : 0 ) {
+    font-size: @size;
+    .relative;
+    .inline;
+    width: ~"calc( 1em + 2px )";
+    height: ~"calc( 1em + 2px )";
+    margin: 0;
+    padding: 0;
+    border-radius: @radius;
+    .bd;
+    .gray-bd;
+    .inline-flex;
+    .pointer;
+
+    &:checked:after {
+        .absolute;
+        .pointer;
+
+        & when ( isnumber( @content ) ) {
+            content: "";
+            background-color: @color;
+            border-radius: @radius;
+            width: calc( .5em * @content-size );
+            height: calc( .5em * @content-size );
+            top: calc( .25em * ( 2.0 - @content-size ) );
+            left: calc( .25em * ( 2.0 - @content-size ) );
+        }
+
+        & when ( isstring( @content ) ) {
+            @content-per : @content-size * 100;
+            @content-offset : ( @content-per - 100 ) / -2.0;
+            content: @content;
+            .hl;
+            font-size: ~"@{content-per}%";
+            left : ~"@{content-offset}%";
+            top: ~"@{content-offset}%";
+            color: @color;
+            width: 1em;
+            height: 1em;
+            line-height: 1em;
+            .text-center;
+        }
+    }
+}
+
+input[type="text"] {
+    padding: .6em .8em;
+    .white-bg;
+    .gray;
+    .bd;
+    .hoary-bd;
+    .ot-no;
+
+    &[readonly] {
+        .hoary-bg;
+    }
+}
+

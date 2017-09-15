@@ -203,6 +203,10 @@ section.contents {
                         .hl;
                         .udl;
                     }
+
+                    i {
+                        .font-14;
+                    }
                 }
                 table {
                     .text-center;
@@ -393,6 +397,68 @@ section.contents {
                                 height: 6666px;
                             }
                         }
+                    }
+
+                    &.radios-box {
+                        > div {
+                            margin-bottom: 15px;
+                        }
+                        #radio-default {
+                            .radio;
+                        }
+
+                        #radio-block {
+                            .radio( 14px, @hl, 0 );
+                        }
+
+                        #radio-black {
+                            .radio( 14px, @black );
+                        }
+
+                        #radio-radius {
+                            .radio( 14px, @hl, 30% );
+                        }
+
+                        #radio-big {
+                            .radio( 22px );
+                        }
+
+                        #radio-big-2 {
+                            .radio( 14px, @red, 0, 2 );
+                        }
+
+                        #radio-big-3 {
+                            .radio( 14px, @hl, 50%, 1.5 );
+                        }
+
+                        #checkbox-default {
+                            .checkbox;
+                        }
+
+                        #checkbox-block {
+                            .checkbox( 14px, @hl, 50% );
+                        }
+
+                        #checkbox-black {
+                            .checkbox( 14px, @black );
+                        }
+
+                        #checkbox-radius {
+                            .checkbox( 14px, @hl, 30% );
+                        }
+
+                        #checkbox-big {
+                            .checkbox( 22px );
+                        }
+
+                        #checkbox-266b {
+                            .checkbox( 14px, @red, 0, 1, "\266b" );
+                        }
+
+                        #checkbox-266b-2 {
+                            .checkbox( 14px, @red, 0, 2 );
+                        }
+
                     }
                 }
 

@@ -1,4 +1,4 @@
-@import "variable.less";
+@import (reference) "variable.less";
 
 .media-select ( @tag, @value, @min ) when ( @min <= 0 ) {
     @{tag} {
@@ -32,6 +32,11 @@
     .media-select( ~"@{cl}inline", { display: inline }, @min );
     .media-select( ~"@{cl}inline-block", { display: inline-block }, @min );
     .media-select( ~"@{cl}table", { display: table }, @min );
+    .media-select( ~"@{cl}inline-flex", {
+        display: -webkit-inline-flex;
+        display: -moz-inline-flex;
+        display: inline-flex;
+    }, @min );
     .media-select( ~"@{cl}flex", {
         display: -webkit-flex;
         display: -moz-flex;
