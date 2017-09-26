@@ -381,6 +381,25 @@
 
     // cursor;
     .media-select( ~"@{cl}pointer", { cursor: pointer; }, @min );
+    .media-select( ~"@{cl}move", { cursor: move; }, @min );
+    .media-select( ~"@{cl}text", { cursor: text; }, @min );
+    .media-select( ~"@{cl}wait", { cursor: wait; }, @min );
+    .media-select( ~"@{cl}zoom-in", { cursor: zoom-in; }, @min );
+    .media-select( ~"@{cl}zoom-out", { cursor: zoom-out; }, @min );
+
+    // other
+    .media-select( ~"@{cl}dotdotdot", {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+    }, @min );
+    .media-select( ~"unselectable", {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }, @min );
 }
 
 .make-classes();

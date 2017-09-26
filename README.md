@@ -5,7 +5,7 @@
 一个Less样式库，封装组合原始css
 A library for styles which boxed original css by less.
 
-### 可用class / Can used the classes.
+### 可用class / useable classes.
 ```css
 
 /**    简单样式    **/
@@ -109,18 +109,59 @@ A library for styles which boxed original css by less.
 .xs-font-8, .mxs-none, .l-pd-left-no
 
 // opacity
-.transparent, .opacity
+.transparency, .opacity
 
 // pointer-events
 .events-none, .events-all, .events-auto
 
 // cursor
-.pointer
+.pointer, .move, .text, .wait, .zoom-in, .zoom-out
+
+// other
+.dotdotdot
+.unselectable
 
 ```
 
-### 可用的方法 / Can used the functions
+### 可用的方法 / useable functions
 ```css
+/**    覆盖的样式    **/
+/**    appear styles    **/
+
+
+/**
+ * 单选
+ * radio.
+ *
+ * @size : 宽度
+ *      @default : 14px
+ * @color : 单选按钮颜色
+ *      @default : @hl
+ * @radius : 单选边框弧度
+ *      @default : 50%
+ * @content-size : 单选填充大小倍数
+ *      @default : 1
+ **/
+.radio ( @size; @color; @radius; @content-size ) 
+
+/**
+ * 多选
+ * checkbox.
+ *
+ * @size : 宽度
+ *      @default : 14px
+ * @color : 多选按钮颜色
+ *      @default : @hl
+ * @radius : 多选边框弧度
+ *      @default : 0%
+ * @content-size : 多选填充大小倍数
+ *      @default : 1
+ * @content : 多选填充内容
+ *      @default : "✔"
+ **/
+.checkbox ( @size; @color; @radius; @content-size;  @content )
+
+
 /**    媒体查询    **/
 /**    media selection    **/
 
@@ -447,7 +488,70 @@ A library for styles which boxed original css by less.
  *      @defalut : .5s
  **/
 .ripple ( @color; @width; @duration )
+
+/**
+ * 不消散涟漪
+ *
+ * @color : 颜色
+ *      @defalut : @gray
+ * @width : 涟漪宽度
+ *      @defalut : 100%
+ * @duration : 持续时间
+ *      @defalut : .5s
+ **/
+.ripple-hold ( @color; @width; @duration ) 
+
+
+/**    算法    **/
+/**    algorithm    **/
+
+
+/**
+ * 三次方贝塞尔曲线
+ *
+ * @p1x : 控制点p1x
+ * @p1y : 控制点p1y
+ * @p2x : 控制点p2x
+ * @p2y : 控制点p2y
+ * @t : 函数变量
+ **/
+.cubic-bezier( @p1x, @p1y, @p2x, @p2y, @t )
+
+/**
+ * linear
+ *
+ * @t : 函数变量
+ **/
+.linear ( @t )
+
+/**
+ * ease
+ *
+ * @t : 函数变量
+ **/
+.ease ( @t )
+
+/**
+ * ease-in
+ *
+ * @t : 函数变量
+ **/
+.ease-in ( @t )
+
+/**
+ * ease-out
+ *
+ * @t : 函数变量
+ **/
+.ease-out ( @t )
+
+/**
+ * ease-in-out
+ *
+ * @t : 函数变量
+ **/
+.ease-in-out ( @t ) 
 ```
 
-# License
+# 版权声明 / License
 [ISC](http://spdx.org/licenses/ISC)

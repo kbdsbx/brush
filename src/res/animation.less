@@ -121,6 +121,16 @@
     ._ripple( @color; @width; @duration );
 }
 
+/**
+ * 不消散涟漪
+ *
+ * @color : 颜色
+ *      @defalut : @gray
+ * @width : 涟漪宽度
+ *      @defalut : 100%
+ * @duration : 持续时间
+ *      @defalut : .5s
+ **/
 .ripple-hold ( @color: @gray; @width : 100%; @duration : .5s ) {
     ._ripple( @color; @width; @duration; true );
 }

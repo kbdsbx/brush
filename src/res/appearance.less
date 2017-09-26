@@ -1,9 +1,37 @@
 @import (reference) 'main.less';
 
+/**
+ * 单选
+ * radio.
+ *
+ * @size : 宽度
+ *      @default : 14px
+ * @color : 单选按钮颜色
+ *      @default : @hl
+ * @radius : 单选边框弧度
+ *      @default : 50%
+ * @content-size : 单选填充大小倍数
+ *      @default : 1
+ **/
 .radio ( @size : 14px; @color : @hl; @radius : 50%; @content-size: 1 ) {
     ._radio( @size; @color; @radius; @content-size; );
 }
 
+/**
+ * 多选
+ * checkbox.
+ *
+ * @size : 宽度
+ *      @default : 14px
+ * @color : 多选按钮颜色
+ *      @default : @hl
+ * @radius : 多选边框弧度
+ *      @default : 0%
+ * @content-size : 多选填充大小倍数
+ *      @default : 1
+ * @content : 多选填充内容
+ *      @default : "✔"
+ **/
 .checkbox ( @size : 14px; @color: @hl; @radius : 0%; @content-size: 1;  @content : "✔" ) {
     ._radio( @size, @color, @radius, @content-size, @content );
 }
@@ -53,6 +81,7 @@
     }
 }
 
+// todo
 input[type="text"] {
     padding: .6em .8em;
     .white-bg;
