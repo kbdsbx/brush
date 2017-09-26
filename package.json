@@ -1,6 +1,6 @@
 {
   "name": "less-brush",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "simple less library.",
   "main": "index.js",
   "directories": {
