@@ -115,11 +115,12 @@ A library for styles which boxed original css by less.
 .events-none, .events-all, .events-auto
 
 // cursor
-.pointer, .move, .text, .wait, .zoom-in, .zoom-out
+.cur-pointer, .cur-move, .cur-text, .cur-wait, .cur-zoom-in, .cur-zoom-out
 
 // other
 .dotdotdot
 .unselectable
+.selectable
 
 ```
 

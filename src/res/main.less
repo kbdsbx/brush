@@ -380,12 +380,12 @@
     .media-select( ~"@{cl}events-auto", { pointer-events: auto; }, @min );
 
     // cursor;
-    .media-select( ~"@{cl}pointer", { cursor: pointer; }, @min );
-    .media-select( ~"@{cl}move", { cursor: move; }, @min );
-    .media-select( ~"@{cl}text", { cursor: text; }, @min );
-    .media-select( ~"@{cl}wait", { cursor: wait; }, @min );
-    .media-select( ~"@{cl}zoom-in", { cursor: zoom-in; }, @min );
-    .media-select( ~"@{cl}zoom-out", { cursor: zoom-out; }, @min );
+    .media-select( ~"@{cl}cur-pointer", { cursor: pointer; }, @min );
+    .media-select( ~"@{cl}cur-move", { cursor: move; }, @min );
+    .media-select( ~"@{cl}cur-text", { cursor: text; }, @min );
+    .media-select( ~"@{cl}cur-wait", { cursor: wait; }, @min );
+    .media-select( ~"@{cl}cur-zoom-in", { cursor: zoom-in; }, @min );
+    .media-select( ~"@{cl}cur-zoom-out", { cursor: zoom-out; }, @min );
 
     // other
     .media-select( ~"@{cl}dotdotdot", {
@@ -399,6 +399,12 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+    }, @min );
+    .media-select( ~"@{cl}selectable", {
+        -webkit-user-select: all;
+        -moz-user-select: all;
+        -ms-user-select: all;
+        user-select: all;
     }, @min );
 }
 

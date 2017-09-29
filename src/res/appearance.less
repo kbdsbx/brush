@@ -40,19 +40,22 @@
     font-size: @size;
     .relative;
     .inline;
-    width: ~"calc( 1em + 2px )";
-    height: ~"calc( 1em + 2px )";
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    width: 1em;
+    height: 1em;
     margin: 0;
     padding: 0;
     border-radius: @radius;
     .bd;
     .gray-bd;
     .inline-flex;
-    .pointer;
+    .cur-pointer;
 
-    &:checked:after {
+    &:after {
         .absolute;
-        .pointer;
+        .cur-pointer;
+        .transparency;
 
         & when ( isnumber( @content ) ) {
             content: "";
@@ -79,19 +82,48 @@
             .text-center;
         }
     }
-}
 
-// todo
-input[type="text"] {
-    padding: .6em .8em;
-    .white-bg;
-    .gray;
-    .bd;
-    .hoary-bd;
-    .ot-no;
-
-    &[readonly] {
-        .hoary-bg;
+    &:checked:after {
+        .opacity;
     }
 }
+
+
+.text ( @size: 14px; @color: @gray; @radius: 0 ) {
+    ._text( @size, @color, @radius, 0 );
+}
+
+.textarea( @size: 14px; @color: @gray; @radius: 0 ) {
+    ._text( @size, @color, @radius, 0 );
+}
+
+.select( @size: 14px; @color: @gray; @radius: 0 ) {
+    ._text( @size, @color, @radius, "<polygon points='0,4 20,4 10,16' style='fill: @{color}' />" );
+}
+
+._text ( @size, @color, @radius, @badge ) {
+    .ot-no;
+    .bd;
+    .gray-bd;
+    .white-bg;
+    font-size: @size;
+    padding: .6em .8em;
+    color: @color;
+    border-radius: @radius;
+
+    &::placeholder {
+        color: lighten( @color, 20% );
+    }
+
+    & when ( isstring( @badge ) ) {
+        padding-right: 2em;
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='20px' width='20px'>@{badge}</svg>") right .5em center no-repeat;
+        background-size: 1em auto;
+    }
+
+    &[disabled] {
+        background-color: @hoary;
+    }
+}
+
 

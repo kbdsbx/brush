@@ -237,6 +237,7 @@ section.contents {
                     .mg-tp;
                     .mg-bt;
                     .full;
+                    .gray;
                     
                     .items {
                         .full;
@@ -459,6 +460,25 @@ section.contents {
                             .checkbox( 14px, @red, 0, 2 );
                         }
 
+                    }
+
+                    &.text-box {
+                        #text-default {
+                            .text();
+                        }
+
+                        #textarea-default {
+                            .textarea();
+                        }
+
+                        #textarea-scrollbar {
+                            .textarea();
+                            .scrollbar();
+                        }
+
+                        #select-default {
+                            .select();
+                        }
                     }
                 }
 
@@ -699,7 +719,7 @@ section.contents {
                 .make-btn-action ( scroll-5, { .scrollbar( 5px, @hl, @white, 2.5px ) } );
 
                 button {
-                    .pointer;
+                    .cur-pointer;
                     .pd-half;
                     .text-center;
                     .mg-bt-quarter;
